@@ -31,7 +31,7 @@
             <div class="hpanel">
 				<div class="panel-heading hbuilt">
 					<span class="pull-left"><i class="fa fa-plus"></i> Add New Jobs</span>
-					<a class="pull-right" href="<?php print base_url(); ?>jobs/availablejobs""><i class="fa fa-th"></i> List All Jobs</a>
+					<a class="pull-right" href="<?php print base_url(); ?>jobs/available"><i class="fa fa-th"></i> List All Jobs</a>
 					<div class="clearfix"></div>
 				</div>
                 <div class="panel-body">

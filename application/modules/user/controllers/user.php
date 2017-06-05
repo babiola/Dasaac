@@ -49,25 +49,7 @@ class User extends MX_Controller {
         $data['module'] = 'user';
         echo Modules::run('templ/templCon', $data);
     }
-		function hotelbook(){
-			$this->form_validation->set_rules('surname', 'Surname','trim|required');
-			$this->form_validation->set_rules('othernames', 'Other Names','trim|required');
-			$this->form_validation->set_rules('hoteltype', 'Hotel Type', 'trim');
-			$this->form_validation->set_rules('checkindate', 'Check-in','trim|required');
-			$this->form_validation->set_rules('checkoutdate', 'Check-out', 'trim|required');
-			$this->form_validation->set_rules('location', 'Area Location','trim');
-			$this->form_validation->set_rules('email', 'Email', 'trim|required');
-		if ($this->form_validation->run() === FALSE){
-			$data1['msg'] = 'Please Provide a valid information';
-		redirect('/flight/',$data1);
-		}else{
-		$data = $this->get_data_hotel_post();
-		$this->_insert_hotel($data);
-		$data1['msg'] = 'thank you for doing business with us! we will get back to you shortly';
-		redirect('/flight/',$data1);
-		
-		}
-	}
+	
  function apply(){
 		$data['title'] = 'Dasaac Travels Hotel List';
 		// $data['userlist'] = $this->get_custom_query_hotel()->result();
@@ -163,7 +145,7 @@ class User extends MX_Controller {
 	 
  }
  function adduser(){
-  $data['title'] = 'Dasaac Travels adding User';
+		$data['title'] = 'Dasaac Travels adding User';
         $data['view_file'] = 'index';
         $this->loadView($data);
 

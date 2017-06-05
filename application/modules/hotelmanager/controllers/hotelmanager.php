@@ -85,6 +85,7 @@ class Hotelmanager extends MX_Controller {
 			$data['LOCATION'] = $this->input->post('location', TRUE);
 			$data['CATEGORY'] = $this->input->post('cat', TRUE);
 			$data['EMAIL'] = $this->input->post('email', TRUE);
+			$data['PHONE'] = $this->input->post('phnno', TRUE);
 			$data['STATUS'] = 'BOOKED';
         return $data;
     }	
@@ -164,7 +165,14 @@ function _insert_hotel($data){
         $query = $this->mdl_hotelmanager->_custom_query($mysql_query);
         return $query;
     }
-
+// error log
+    function log($process) {
+        $process_user = $_SESSION['username'];
+		$url = $_SERVER['REMOTE_ADDR'];
+		$logged_date = date('Y-m-d h:i:s');
+        $query = "INSERT INTO TS_LOG(process,process_user,urlaccessed,logged_date)VALUES ('$process','$process_user','$url','$logged_date')";
+        $this->_custom_query($query);
+    }
     function get_where($id) {
         $this->load->model('mdl_hotelmanager');
         $query = $this->mdl_hotelmanager->get_where($id);

@@ -45,8 +45,10 @@ class Dashboard extends MX_Controller {
       $data['hotel'] = $this->count_hotel();
 		$data['complaint'] = $this->count_complaint();
     $data['enquiry'] = $this->count_enquiry();
-	//$data['vacation'] = $this->count_vacation();
+	$data['todayf'] = $this->count_today_flight();
+	$data['todayh'] = $this->count_today_hotelbooked();
       $data['jobs'] = $this->count_jobs();
+	   $data['deals'] = $this->count_deals();
 	
 	return $data;
 	}
@@ -69,6 +71,18 @@ function profile(){
 	function count_flight(){
 		$dated = DATE('y-m-d');
 		$query= "select * from flightreservation "; //where DATE_FORMAT(BOOKING_DATE,'y-m-d') = '$dated'";
+		$num_rows = $this->_custom_num_rows_query($query);
+		return $num_rows;
+	}
+	function count_today_flight(){
+		$dated = DATE('y-m-d');
+		$query= "select * from flightreservation where DATE_FORMAT(BOOKING_DATE,'%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')";
+		$num_rows = $this->_custom_num_rows_query($query);
+		return $num_rows;
+	}
+	function count_today_hotelbooked(){
+		$dated = DATE('y-m-d');
+		$query= "select * from hotel where DATE_FORMAT(BOOKING_DATE,'%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')";
 		$num_rows = $this->_custom_num_rows_query($query);
 		return $num_rows;
 	}

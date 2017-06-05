@@ -1,65 +1,46 @@
-﻿	
-		<section class="careerbody">
-		
-			<div>
-				
-			<h1> <span>Apply</span>for Visa </h1>	
-			<p>
-			<span>Dasaac Travels & Tours</span> remains the best choice for your career growth. Make us your next choice today and experience the best in the travel industry.<br>
-			</p>
-			
-			<p>
-			With years of experience in the travels and tours industry,  Dasaac Travels accords you a chance at being part of a goal driven team who constantly express their creativity, are self-motivated and seek to constantly improve so as to remain at the fore front of happenings in and aroubd the travel industry. Join us today to experience this unique growth.
-			</p>
-			<p>
-			Dasaac Travels is committed to developing travels sales specialists who have passion for selling and developing holiday. Having related experience in the travel and tours industry will be an added advantage to you. All ticketing, reservation and marketing certificates should be added to your application.
-			</p>
-			
-			<p>
-			<span id="span_avail">Available Positions:</span>
-			</p>
-			</div>
-			<div id="careerpositnwrap">
-				<div>
-					<div class="careerpositions">
-						<h2>Online Marketing Officer</h2>
-						<p> Marketing and Sales department </p>
-					<a href="<?php echo base_url(); ?>visa/apply">	<button class="button"> Full Description</button> </a>
-					</div>
-					
-					<div class="careerpositions">
-						<h2>Reservation Officer</h2>
-						<p> Ticketing and reservations department </p>
-					<a href="<?php echo base_url(); ?>visa/apply">	<button class="button"> Full Description</button> </a>
-					</div>
-				
-					<div class="careerpositions">
-						<h2>Graphics Designer</h2>
-						<p> Marketing and Sales department </p>
-					<a href="<?php echo base_url(); ?>visa/apply">	<button class="button"> Full Description</button> </a>
-					</div>
-					
-					<div class="careerpositions">
-						<h2> Customer Support </h2>
-						<p> Marketing and Sales department </p>
-					<a href="<?php echo base_url(); ?>visa/apply">	<button class="button"> Full Description</button> </a>
-					</div>
-					
-					<div class="careerpositions">
-						<h2> Corporate Sales Officer</h2>
-						<p> Marketing and Sales department </p>
-					<a href="<?php echo base_url(); ?>visa/apply">	<button class="button"> Full Description</button> </a>
-					</div>
-					
-				</div>
-				
-				<hr />
-				
-				
-			</div>
-		
-		
-			
-		
-		
-		</section>
+﻿<div class="jumbotron">
+          <div class="container">
+            <img src="" />
+          </div>
+        </div>
+
+       
+       <div class="continer-fluid">
+           <div class="row">
+               <div class="col-md-2 col-md-offset-1">
+                   <ul class="nav nav-pills nav-stacked">
+                      <li role="presentation" class="active"><a href="#">Dubai Visa</a></li>
+                      <li role="presentation"><a href="#">Nigerian Visa</a></li>
+                      <li role="presentation"><a href="#">South African Visa</a></li>
+                      <li role="presentation"><a href="#">Turkey Visa</a></li>
+                      <li role="presentation"><a href="#">Japan Visa</a></li>
+                      <li role="presentation"><a href="#">U.S Visa</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-6 col-md-offset-1">
+                  <h1>
+                      Visa Facilitation
+                  </h1>
+                   <p>
+                    Securing your visas just got easy with our Visa Facilitation programs<br />
+
+                    With unrivalled experience in the Procurement of Visas and related services, Dasaac Travels offers you a close to perfect chance of securing that Visa you need <br>
+
+                    At Dasaac Travels, we aim to make your visa procurement a success by providing you with all the necessary information you will need for a sucessful interview.<br />
+
+                    Because most embassies require evidence of confirmed flight and hotel reservation; we assist you by securing the hotel and flight of your choice. <br>
+                    
+                    Please note that Visa issuance is determined only by the embassies hence Dasaac Travels does not guarantee you will get a visa; we are only assisting the process. <br>
+
+                    Note: Visas do not guarantee entry into any country. It is still the exclusive preserve of immigration officials at point of entry.
+
+                   </p>
+               </div>
+               
+               <div class="col-md-2">
+               <img src="" alt="">
+               </div>
+           </div>
+       </div>
+       
+       

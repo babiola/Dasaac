@@ -1,9 +1,22 @@
-
-		<section id="aboutuscont">
-		
-		<article>
-		
-		<div>
+ <div class="jumbotron" style="background-image: url(imgs/banners/banner_about.jpg); background-repeat: no-repeat; background-size: cover; background-position: center;">
+          <div class="container"  style="height: 220px;">
+            <img src="" />
+          </div>
+        </div>
+       
+        <div class="container-fluid">
+            <div class="col-md-12">
+                    <ol class="breadcrumb" style="width: 100%;  ">
+                      <li><a href="#">Home</a></li>
+                      <li class="active">About us</li>
+                    </ol>
+                </div>
+            
+        </div>
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
 		
 		<p>
 			Dasaac Travel & Tours, caters to clients; making travel easy, worry-free and affordable. 
@@ -34,39 +47,33 @@
 				<li>Reservation and Ticketing</li>
 				<li>Destination Advise and many more</li>
 			</ol>
-		
 		</p>
 		
 		<p>
 		We believe our aviation services are distinguished by our competitive rates, a flexible and timely response to your scheduling requirements and an efficient and courteous service backed by the considerable  experience.
 		</p>
 		
-		</div>
-		
-		</article>
-		</section>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		<!--bottom starts here -->
-	
+        </div>
+            <div class="col-md-3">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Our Promise to You</h3>
+                        </div>
+                          <div class="panel-body">
+                            <ul>
+                            <li>We are committed to you</li>
+                            <li>We are committed to you</li>
+                            <li>We are committed to you</li>
+                            <li>We are committed to you</li>
+                            <li>We are committed to you</li>
+                            <li>We are committed to you</li>
+                            <li>We are committed to you</li>
+                            <li>We are committed to you</li>
+                            <li>We are committed to you</li>
+                            <li>We are committed to you</li>
+                            </ul>
+                          </div>
+                  </div>
+                </div>
+            </div>
+        </div>

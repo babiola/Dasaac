@@ -54,7 +54,7 @@ class Jobs extends MX_Controller {
         $data['module'] = 'jobs';
         echo Modules::run('templ/templCon', $data);
     }
-	 function joblist($data){
+	 function joblist(){
 	 $this->get_job_list($data);
  }
  
@@ -65,26 +65,7 @@ class Jobs extends MX_Controller {
 		$data['module'] = 'jobs';
    echo Modules::run('templ/templCon', $data);
  }
-/* 		function hotelbook(){
-			$this->form_validation->set_rules('surname', 'Surname','trim|required');
-			$this->form_validation->set_rules('othernames', 'Other Names','trim|required');
-			$this->form_validation->set_rules('hoteltype', 'Hotel Type', 'trim');
-			$this->form_validation->set_rules('checkindate', 'Check-in','trim|required');
-			$this->form_validation->set_rules('checkoutdate', 'Check-out', 'trim|required');
-			$this->form_validation->set_rules('location', 'Area Location','trim');
-			$this->form_validation->set_rules('email', 'Email', 'trim|required');
-		if ($this->form_validation->run() === FALSE){
-			$data1['msg'] = 'Please Provide a valid information';
-		redirect('/flight/',$data1);
-		}else{
-		$data = $this->get_data_job_post();
-		$this->_insert_hotel($data);
-		$data1['msg'] = 'thank you for doing business with us! we will get back to you shortly';
-		redirect('/flight/',$data1);
-		
-		}
-	}
-	*/
+
 # GET DATA FROM JOB POST
 	public function get_data_job_post() {
 			$data = array();
@@ -161,27 +142,17 @@ $data['view_file'] = 'index';
 		if ($this->form_validation->run() === FALSE){
 			$data1['msg'] = 'Please Provide a valid information';
 			
-		$this->joblist($data1);
+		$this->get_job_list($data1);
 		}else{
 		$data = $this->get_data_job_post();
 		$this->_insert($data);
 		$data1['msg'] = '<div class="boxed-wrapper">Job Successfully added</div>';
-		$this->joblist($data1);
+		$this->get_job_list($data1);
 		}	
 			
  }
-/*  public function get_data_submit_post() {
-			$data = array();
-			$data['Name'] = $this->input->post('hotelname', TRUE);
-			$data['cat_id'] = $this->input->post('categoryname', TRUE);
-			$data['loc_id'] = $this->input->post('location', TRUE);
-			$data['price'] = $this->input->post('price', TRUE);
-			$data['address'] = $this->input->post('address', TRUE);
-        return $data;
-    }	 */
 
- 
-  function availablejobs(){
+  function available(){
   $data['title'] = 'Dasaac Travels Available jobs';
 		$data['jobs'] = $this->get_custom_query_jobs()->result();
         $data['view_file'] = 'newjobs';
@@ -208,7 +179,7 @@ $data['view_file'] = 'index';
 }
  function get_custom_query_jobs(){
 	  $sql = " select s.id,s.job_id ,s.job_title,substr(s.job_desc,1,70) 'job_desc', c.location_name, b.cat_name
-		from job s, job_category b, location c where s.cat_id = b.cat_id and s.Loc_id = c.loc_id ";
+		from job s, job_category b, location c where s.cat_id = b.cat_id and s.Loc_id = c.loc_id order by date_posted desc limit 8";
 	 $query = $this->_custom_query($sql);
 	 return $query;
 	 

@@ -1,22 +1,17 @@
-﻿   <div class="small-header">
-        <div class="hpanel">
-            <div class="panel-body">
-                <div id="hbreadcrumb" class="pull-right">
-                    <ol class="hbreadcrumb breadcrumb">
-                        <li><a href="<?php echo base_url(); ?>dashboard">Dashboard</a></li>
-                        <li>
-                            <span>Deals</span>
-                        </li>
-                        <li class="active">
-                            <span>booking </span>
-                        </li>
-                    </ol>
-                </div>
-
-                <h2 class="font-light m-b-xs">
-                    Deals Management
-                </h2>
-                <small>Deals Management for dasaac Travels</small>
+﻿        <div class="container">
+            <div class="row">
+			<?php 
+			foreach($deal as $deals){ ?>
+			 <div class="col-md-4">
+                    <div class="thumbnail">
+                      <img style="height:150px;" src="<?php echo base_url(); ?>uploads/<?php echo$deals->path;?>" alt="<?php echo $deals->Name;  ?>">
+                      <div class="caption">
+                        <h1><?php echo $deals->Name;  ?></h1>
+                        <p><?php echo $deals->description; ?></p>
+                      </div>
+                    </div>
+                </div>	
+			<?php } ?>
             </div>
-        </div>
-    </div>
+        </div>   
+      

@@ -69,7 +69,7 @@ class Contact extends MX_Controller {
             $value = $row->CONTACT_ID;
         }
        $process = $data['msg'] = " $value, deleted sucessfully";
-        //$this->log($process);
+        $this->log($process);
         $this->contactlist($data);
     }
 function reply($id){
@@ -94,6 +94,7 @@ function reply($id){
         // $this->session->set_flashdata("email_sent","Email sent successfully."); 
 			 }else {
 				 $process = $data['msg'] = " $email_sent, replied not sucessfully";
+				 $this->log($process);
          //$this->session->set_flashdata("email_sent","Error in sending Email."); 
 			 }
 			
@@ -163,7 +164,14 @@ function _insert_hotel($data){
         $query = $this->mdl_contact->get_where($id);
         return $query;
     }
-
+// error log
+    function log($process) {
+        $process_user = $_SESSION['username'];
+		$url = $_SERVER['REMOTE_ADDR'];
+		$logged_date = date('Y-m-d h:i:s');
+        $query = "INSERT INTO TS_LOG(process,process_user,urlaccessed,logged_date)VALUES ('$process','$process_user','$url','$logged_date')";
+        $this->_custom_query($query);
+    }
 }
 
 ?>

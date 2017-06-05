@@ -10,7 +10,7 @@ class Mdl_deals extends CI_Model {
     }
 
     function get_table() {
-        $table = "Deal";
+        $table = "deals";
         return $table;
     }
 	
@@ -45,9 +45,9 @@ class Mdl_deals extends CI_Model {
         return $query;
     }
 
-    function get_where($username) {
+    function get_where($id) {
         $table = $this->get_table();
-        $this->db->where('USERNAME', $username);
+        $this->db->where('ID', $id);
         $query = $this->db->get($table);
         //  echo $query;
         return $query;
@@ -67,13 +67,13 @@ class Mdl_deals extends CI_Model {
 
     function _update($id, $data) {
         $table = $this->get_table();
-        $this->db->where('AGENT_ID', $id);
+        $this->db->where('ID', $id);
         $this->db->update($table, $data);
     }
 
     function _delete($id) {
         $table = $this->get_table();
-        $this->db->where('AGENT_ID', $id);
+        $this->db->where('ID', $id);
         $this->db->delete($table);
     }
 

@@ -13,71 +13,49 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/metisMenu/dist/metisMenu.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/animate.css/animate.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
-
     <!-- App styles -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/fonts/pe-icon-7-stroke/css/helper.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/styles/style.css">
 		<link type="text/css" href="<?php echo base_url(); ?>assets/styles/animate/animate.css" rel="stylesheet"/>
-		<link type="text/css" href="<?php echo base_url(); ?>assets/styles/css/mystyles.css" rel="stylesheet" />
+		<link type="text/css" href="<?php echo base_url(); ?>assets/styles/css/mystyle.css" rel="stylesheet" />
+		
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/dist/sweetalert.css">
 	</head>
 	
-	<body class="body">
-		<div id="navinfo">
-			<marquee id="marqueehome"> 
-					<ul>
-						<li>
-							<h2 class="maqblink"> <a href="Ã¼c.html">HOT DEALS </a> </h2>
-							<span id="mardhomeinfo1">
-							DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS 
-							</span>
-							
-							<span id="mardhomeinfo1">
-							DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS 
-							</span>
-							
-							<span id="mardhomeinfo1">
-							DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS 
-							</span>
-						</li>	
-					
-					
-						<li>
-							<h2 class="maqblink"> <a href="Ã¼c.html">NEW DEALS </a> </h2>
-							<span id="mardhomeinfo1">
-							DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS 
-							</span>
-							
-							<span id="mardhomeinfo1">
-							DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS 
-							</span>
-							
-							<span id="mardhomeinfo1">
-							DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS 
-							</span>
-						</li>
-						<li>
-							<h2 class="maqblink"> <a href="Ã¼c.html"> CLOSING DEALS </a> </h2>
-							<span id="mardhomeinfo1">
-							<img src="">
-							DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS DASAAC TRAVELS 
-							</span>
-						</li>
-					</ul>
-									
-				</marquee> 
-				
-						<?php echo validation_errors();?>
-						<form action="<?php print base_url(); ?>flight/subscrible" method="POST">
-							<label style="color:#ffffff;" for="newsletter">SUBSCRIBE TO OUR NEWSLETTER</label>
-							<input type="email" name="newsletter" placeholder="Enter Email Address..." required />
-							<input class="btn-primary" type="submit" value="submit">
-												
-						</form>
-		</div>
-		
-		
-			<div id="navwrap">
+	<body>
+	
+<div class="container-fluid" style="background-color: #8D652F; height: 40px; padding: 0px; ">
+    <div class="row">
+        <div class="col-md-7">
+          <marquee style="margin-top: 6px; margin-left: 5px; color: yellow; font-size: 1.2em"> 
+          <span style="background-color: red; font-size: .7em; padding: 5px; font-weight: bold; border-radius: 6px; margin-right: 10px;">
+           HOT DEALS
+           </span>
+          dasaac dasaac dasaac dasaac dasaac dasaac dasaac dasaac dasaac dasaac  
+          dasaac dasaac dasaac dasaac dasaac dasaac dasaac dasaac dasaac dasaac
+          
+           <span style="background-color: red; font-size: .7em; padding: 5px; font-weight: bold; border-radius: 6px; margin-right: 10px;">
+           CLOSING DEALS
+           </span>         
+          
+          </marquee>
+        </div>
+        <div class="col-md-5">
+                    <?php echo validation_errors();?>
+            <form class="form-inline" action="<?php print base_url(); ?>flight/subscrible" method="POST" style="margin-top: 5px; margin-left: 10px;">
+              <div class="form-group">
+                <label for="subscriberemail" style="color: #fff;">Subscriber to newsletter:  </label>
+                <input type="email" class="form-control input-sm" id="subscriberemail" placeholder="abc@domain.com" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-sm">subscribe</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+<div class="container-fliud">
+    <div id="navwrap">
 				<div id="logobox">
 				</div>
 		
@@ -85,391 +63,344 @@
 						<ul>
 							<li><a href="<?php print base_url(); ?>" id="home">Home</a></li>
 							<li><a href="<?php print base_url(); ?>flight/aboutus" id="about">About us</a></li>
-							<li><a href="<?php print base_url(); ?>flight/brochure" id="broch">Brochures</a></li>
-							<li><a href="<?php print base_url(); ?>flight/career" id="career">Careers</a></li>
+							<li><a href="<?php print base_url(); ?>brochure" id="broch">Brochures</a></li>
+							<li><a href="<?php print base_url(); ?>careers" id="career">Careers</a></li>
 							<li><a href="<?php print base_url(); ?>flight/contactus" id="cont">Contact us</a></li>
 						</ul>					
 					</nav>
-			</div>	
+    </div>		
+</div>
+			
 			<div class="wrap">		
 				<header>
 					<label for="slide-1-trigger"> Packages </label>
 					<label for="slide-2-trigger"> Flights </label>
 					<label for="slide-3-trigger"> Hotels </label>
-					<label for="slide-4-trigger"> Deals </label>
-					<label for="slide-6-trigger"><a style="color:white;" href="<?php print base_url(); ?>jobs" id="jobs">Jobs</a></label>
-					<label for="slide-6-trigger"><a style="color:white;" href="<?php print base_url(); ?>visa" id="visa">Visa</a></label>
-					<label for="slide-6-trigger"><a style="color:white;" href="<?php print base_url(); ?>vacation" id="vacation">Vacations</a></label>
-					<label ><a style="color:white;" href="<?php print base_url(); ?>flight/admin" id="admin">Admin</a></label>
+				<a href="<?php print base_url(); ?>deals"> <label for="slide-4-trigger">Deals</label> </a>
+				<a href="<?php print base_url(); ?>jobs">	<label for="slide-5-trigger"> Jobs </label> </a>
+				<a href="<?php print base_url(); ?>visa">	<label for="slide-6-trigger"> Visa </label> </a>
+				<a href="<?php print base_url(); ?>vacation">	<label for="slide-7-trigger"> Vacation Gallery </label></a>
 				</header>
 		
 		
 			
-				<input id="slide-1-trigger" type="radio" name="slides" checked>
-					<section class="slide slide-1" style="color:black;">
-						<h1>Request For a Package</h1><br />
-						<form class="package-form">
+				<input id="slide-1-trigger" type="radio" name="slides">
+					<section class="slide slide-1">
+						<h1>Search For a Package</h1><br />
+						<form class="form-inline" style="bottom: 30px;">
+							<div class="form-group">
+							<div class="col-md-2">
+                                <select name="packages" class="form-control" cols="50" style="color: #0066FF;">
+                                  <option value="0" >By Destinations....</option>
+                                  <option value="1">Nigeria</option>
+                                  <option value="2">Ghana</option>
+                                  <option value="3">South Africa</option>
+                                  <option value="4">Dubai</option>
+                                  <option value="5">Istanbul</option>
+                                </select>
+                            </div>
 							
-							<select name="packages"  cols="50">
-							  <option value="0" >By Destinations....</option>
-							  <option value="1">Nigeria</option>
-							  <option value="2">Ghana</option>
-							  <option value="3">South Africa</option>
-							  <option value="4">Dubai</option>
-							  <option value="5">Istanbul</option>
-							</select>
-												
-							<select name="theme">
-							  <option value="">By Theme....</option>
-							  <option value="">Adventure</option>
-							  <option value="">Leisure</option>
-							  <option value="">Honeymoon</option>
-							  <option value="">Pilgrimage</option>
-							</select>
+				            <div class="col-md-2">					
+                                <select name="theme" class="form-control" style="color: #0066FF;">
+                                  <option value="">By Theme....</option>
+                                  <option value="">Adventure</option>
+                                  <option value="">Leisure</option>
+                                  <option value="">Honeymoon</option>
+                                  <option value="">Pilgrimage</option>
+                                </select>
+                            </div>
+                            
+						    <div class="col-md-2">
+                                <select name="price" class="form-control" style="color: #0066FF;">
+                                  <option value="">By Price....</option>
+                                  <option value="">$0-500</option>
+                                  <option value="">$500-800</option>
+                                  <option value="">$800-1000</option>
+                                  <option value="">$1000-above</option>
+                                </select>
+                            </div>
 						
-							<select name="price">
-							  <option value="">By Price....</option>
-							  <option value="">$0-500</option>
-							  <option value="">$500-800</option>
-							  <option value="">$800-1000</option>
-							  <option value="">$1000-above</option>
-							</select>
+						    <div class="col-md-2">
+                                <select name="By Date" class="form-control" style="color: #0066FF;">
+                                  <option value="">By Date</option>
+                                  <option value=""></option>
+                                  <option value=""></option>
+                                  <option value=""></option>
+                                  <option value=""></option>
+                                </select>
+                            </div>							
 						
-							<select name="By Date">
-							  <option value="">By Date</option>
-							  <option value=""></option>
-							  <option value=""></option>
-							  <option value=""></option>
-							  <option value=""></option>
-							</select>							
-						
-							  <input name="search" size="40">
-							  <datalist id="packages">
-								<option value="Package 1">
-								<option value="Package 2">
-								<option value="Package 3">
-								<option value="Package 4">
-								<option value="package 5">
-							  </datalist>
-							  <p id ="msg-container"><?php if (isset($msg)){echo $msg;}?></p>
-							  <label for="email">Email:</label><input id="email" type="text" name="itn" placeholder="  Enter Email address">
-							  <input class="btn-success" type="submit">
+							  
+							  <div class="col-md-3">
+                                   <div class="input-group">
+                                    <div class="input-group-addon">@</div>
+                                      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Enter Email">
+                                      </div>
+                                </div>
+                                 
+                                 <div class="col-md-1">
+                                  <input class="btn btn-default" type="submit" style="color: #0066FF;" >
+                                </div>
+                            </div>
 						</form>
 					</section>
 					
-					 <script>
-            $(function () {
-                var msgp = $('#msg-container');
-                setTimeout(function () {
-                    msgp.fadeOut('slow', function () {
-                        $(this).text('').fadeIn();
-                    });
-                }, 20000);
-            });
-        </script>
+					<p class ="message-info"><?php if (isset($msg)){echo $msg;}?></p>
 					
-				<input id="slide-2-trigger" type="radio" name="slides">
+				<input id="slide-2-trigger" type="radio" name="slides"  checked>
 					<section class="slide slide-2">
 						<h1>Flight Reservation</h1><br />
 						
-						<table class="flights-form">
 						<?php echo validation_errors();?>
-						<form method="POST" action = "<?php echo base_url(); ?>flight/bookflight">
-							<tr>
-								<td>
-									<label>Title</label><br />
-									<select name="title">
+						<form method="POST" action = "<?php echo base_url(); ?>flight/bookflight" class="form-inline">					
+							<div class="form-group form-group-xs">
+                               <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-1">
+									<label class="control-label" for="nametitle">Title</label>
+									
+									<select name="title" class="form-control input-sm" id="nametitle"><br />
 										<option value ="mr">Mr</option>
 										<option value ="mrs">Mrs</option>
 										<option value ="ms">Ms</option>
 									</select>
-								</td>
-								
-								<td>
-									<label for="surname">Surname:</label><br />
-									<input id="surname" type="text" name="sname" placeholder=" Surname">
-								</td>
-								  <div class="tabletdspace"></div>
-								<td>
-									
-								</td>
-								
-								<td>
-									<label for="departure">Leaving from:</label><br />
-									<input id="departure" type="text" name="leavefrom" placeholder="  Enter Departing city">
-								</td>
-								
-								
-								<td>							
-									<label>Flight type</label><br />
-									<select name= "flighttype">
-										<option value="Round Trip">Round Trip</option>
-										<option value="One Way">One Way</option>
-										<option value="Multi-segment">Multi-segment</option>
-									</select>
-								</td>
-								
-								
-								<td>
-									<label>Date of Departure</label><br />
-									<input type="date" name="bookingdate">
-								</td>
-								
-								
-								<td>
-									
-								</td>
-								
-								<td>
-									<label>Adults(12+):</label><br />
-									<select name = "adult">
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-									</select>
-								</td>
-								
-								<td>
-									<label>Children:</label><br />
-									<select name = "children">
-										<option value="0">0</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-									</select>
-								</td>
-								
-								<td>
-									<label>infants:</label><br />
-									<select name = "infant">
-										<option value="0">0</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-									</select>
-								</td>
-								</div>
-								
-								<td>
-									<label for="email">Email:</label><br />
-									<input id="email" type="text" name="email" placeholder="  Enter Email address">
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-							
-								
-								</td>
-								
-								
-								
-								<td>
-									<label for="other-names">Other Names:  </label><br />
-									<input id="other-names" type="text" name="othernames" placeholder=" Other Names">									
-								</td>
-								
-								<td>
-							
-								
-								</td>
-								
-								<td>
-									<label for="arrival">Destination:</label><br />
-									<input id="arrival" type="text" name="destination" placeholder="  Enter Arriving city">
-								</td>
-								
-								
-								
-								<td>
-									<label>Flight Class</label><br />
-									<select name="flightclass">
-										<option value="Economy">Economy</option>
-										<option value="Business">Business</option>
-										<option value="First">First</option>
-									</select>
-								</td>
-								
-								
-								<td>									
-									<label>Date of Arrival</label><br />
-									<input type="date" name="arrivaldate">
-								</td>
-								
-								
-								<td>
-									
-								</td>
-								
-								<td>
-									
-								</td>
-								
-								<td>
-																	
-								</td>
-								
-								<td>
-																	
-								</td>
-								
-								<td>
-																	
-								</td>
-								
-								<td>
-									
-								</td>
-								<td>
-									<input class="btn-success" type="submit" value ="bookingflight" name="bookflight" >
-								</td>
-							 </tr>
-							 </form>
-						</table>
+                                    </div>
+                                    
+                                    <div class="col-md-11">
+                                        <div class="col-md-12">
+                                            <div class="col-md-2">
+                                                <label for="surname">Surname:</label>
+									               <input class="form-control input-sm" id="surname" type="text" name="sname" placeholder=" Surname" required>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="departure">Leaving from:</label>
+									           <input class="form-control input-sm" id="departure" type="text" name="leavefrom" placeholder="  Enter Departing city" required>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Flight type:</label><br />
+                                                <select class="form-control input-sm" name= "flighttype" required>
+                                                    <option value="Round Trip">Round Trip</option>
+                                                    <option value="One Way">One Way</option>
+                                                    <option value="Multi-segment">Multi-segment</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Date of Departure:</label>
+									            <input class="form-control input-sm" type="date" name="bookingdate" required>
+                                            </div>
+                                            <div class="col-md-4">
+                                               <div class="col-md-2">
+                                                   <label>A(12+):</label>
+                                                    <select class="form-control input-sm" name="adult">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                    </select>
+                                               </div>
+                                               <div class="col-md-2">
+                                                   <label>Chld:</label>
+                                                    <select class="form-control input-sm" name="children">
+                                                        <option value="0">0</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                    </select>
+                                               </div>
+                                               <div class="col-md-2">
+                                                   <label>infants:</label>
+                                                    <select class="form-control input-sm" name="infant">
+                                                        <option value="0">0</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                    </select>
+                                               </div>                                         
+                                               <div class="col-md-6">
+                                                <label for="phnno">Phone no:</label>
+									           <input class="form-control input-sm" id="phnno" type="text" required name="phnno" placeholder="  Enter Phone number">
+                                            </div>     
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" style="padding-top: 10px;">
+                                            <div class="col-md-2">
+                                               <label for="other-names">Other Names:  </label>
+									           <input class="form-control input-sm" id="other-names" type="text" name="othernames" placeholder=" Other Names">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="arrival">Arriving To:</label>
+                                                <input class="form-control input-sm" id="arrival" type="text" name="destination" placeholder="  Enter Arriving city" required>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Class</label><br />
+                                                <select class="form-control input-sm" name="flightclass" required>
+                                                    <option value="Economy">Economy</option>
+                                                    <option value="Business">Business</option>
+                                                    <option value="First">First</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Date of Arrival</label>
+									            <input class="form-control input-sm" type="date" name="arrivaldate" required>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="col-md-6">
+                                                   <label for="email">Email:</label><br />
+									               <input class="form-control input-sm" id="email" type="text" name="email" placeholder="  Enter Email address" required> 
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <br /> 
+                                                    <input class="btn btn-success form-control input-sm" type="submit" value ="submit" name="submit">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                   
+                            </div>
+                            </div>
+				        </form>
 					</section>
 					
 					
-					
-					
+	 				
 				<input id="slide-3-trigger" type="radio" name="slides">
 					<section class="slide slide-3">
 						<h1>Hotel Reservation</h1><br />
 						<?php echo validation_errors();?>
-						<form  class="hotel-form" method="POST" action = "<?php echo base_url(); ?>hotelmanager/hotelbook">
-					<label for="surname">Surname</label><input id="surname" type="text" name="surname" placeholder=" Surname">
-					<label for="other-names">Other Names</label><input id="other-names" type="text" name="othernames" placeholder=" Other Names">
+						<form class="form-inline" method="POST" action = "<?php echo base_url(); ?>hotelmanager/hotelbook">
+						  <div class="form-group form-group-xs">
+						       <div class="row">
+						           <div class="col-md-12">
+						               <div class="col-md-2">
+						                   <label for="surname">Surname</label><br />
+						                   <input class="form-control input-sm" id="surname" type="text" name="surname" placeholder=" Surname" required>
 							
-							<label>Hotel Type</label><select name="hoteltype">
-								<option>City/Airport</option>
-								<option>Apartment</option>
-							</select>
-							
-							<label>Check-in</label><input type="date" name="checkindate">
-							<label>Check-out</label><input type="date" name="checkoutdate">
-							
-							
-							<label>Occupancy</label><select name="occupants">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-								<option>6</option>
-							</select>
-							
-							
-							<label>Area Location</label><select name="location">
-								<option>Airport</option>
-								<option>Down Town</option>
-								<option>East</option>
-								<option>North</option>
-								<option>South</option>
-								<option>East</option>
-								<option>Resort</option>
-							</select>
-							
-							
-							<label>Category</label><select name="cat">
-								<option>First Class</option>
-								<option>Luxury Hotel</option>
-								<option>Standard Hotel</option>
-								<option>Tourist Hotel</option>
-							</select>
-							
-							
-							<label for="email">Email</label><input id="email" type="text" name="email" placeholder="  Enter Email address">
-							<input class="btn-success" type="submit" value ="bookhotel" name="bookhotel" >
+						               </div>
+						               <div class="col-md-2">
+						                   <label>Category</label><br />
+                                            <select class="form-control input-sm"  name="cat" required>
+                                                <option>First Class</option>
+                                                <option>Luxury Hotel</option>
+                                                <option>Standard Hotel</option>
+                                                <option>Tourist Hotel</option>
+                                            </select>
+						               </div>
+						               <div class="col-md-2">
+						               <label>Occupancy</label><br />
+                                        <select class="form-control input-sm"  name="occupants" required>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                        </select>
+						               </div>
+						               <div class="col-md-2">
+						                   <label>Check-in</label><br />
+						                   <input class="form-control input-sm" type="date" name="checkindate" required>	
+						               </div>
+						               <div class="col-md-4">
+						                   <label for="hphnno">Phone</label><br />
+						                   <input class="form-control input-sm" id="hphnno" type="text" name="phnno" placeholder="  Enter Phone Number" required>
+						               </div>
+						               
+						           </div>
+						           <div class="col-md-12" style="padding-top: 10px;">
+						               
+						               <div class="col-md-2">
+						                   <label for="other-names">Other Names:  </label><br /><input class="form-control input-sm" id="other-names" type="text" name="othernames" placeholder=" Other Names">
+						               </div>
+						               <div class="col-md-2">
+						                   <label>Hotel Type:</label><br />
+                                            <select class="form-control input-sm" name="hoteltype">
+                                                <option>City/Airport</option>
+                                                <option>Apartment</option>
+                                            </select>
+						               </div>
+						               <div class="col-md-2">
+						               <label>Area Location:</label><br />
+                                        <select class="form-control input-sm" name="location">
+                                            <option>Airport</option>
+                                            <option>Down Town</option>
+                                            <option>East</option>
+                                            <option>North</option>
+                                            <option>South</option>
+                                            <option>East</option>
+                                            <option>Resort</option>
+                                        </select>							
+						               </div>
+						              <div class="col-md-2">
+						                   <label>Check-out:</label><br />
+						                   <input class="form-control input-sm" type="date" name="checkoutdate" required>	
+						               </div>
+						               <div class="col-md-4">
+                                       <div class="col-md-8">
+                                          <label for="email">Email</label><br />
+						                   <input class="form-control input-sm" id="email" type="text" name="email" placeholder="  Enter Email address" required> 
+                                       </div>
+                                       <div class="col-md-4">
+                                       <input class="btn btn-success form-control input-sm" type="submit" value ="submit" name="submit">
+                                       </div>		       
+						               </div>
+						           </div>
+						        </div>
+                          </div>
+			
 						</form>
 					</section>
-					
-					
-					
-					
-		<!--			
-				<input id="slide-4-trigger" type="radio" name="slides">
-					<section class="slide slide-4">
-						<h1>Deals</h1><br />
-						<div class="deal-slide">
-						</div>
-					</section>
-					
-					
-					
-					
-					
-				<input id="slide-5-trigger" type="radio" name="slides">
-					<section class="slide slide-5">
-						<h1>Jobs</h1><br />
-						<div class="jobs-slide">
-						</div>
-					</section>
-					
-					
-					
-					
-					
-				<input id="slide-6-trigger" type="radio" name="slides">
-					<section class="slide slide-6">
-						<h1>Visa</h1><br />
-						<div class="visa-slide">
-						</div>
-					</section>
-					
-					
-					
-					
-					
-					
-				<input id="slide-7-trigger" type="radio" name="slides">
-					<section class="slide slide-7">
-						<h1>Vacations</h1><br />
-						<div class="vacations-slide">
-						</div>
-					</section>-->
-			</div>
+</div>
+		
 			
 <!-- Main Wrapper -->
     <?php $this->load->view($module . '/' . $view_file); ?>
-		<footer class="first">
-	<section id="footercaddress">
-	 <h3>Contact Us:</h3>
-	 <p>
-	 phone: 09090010078, 09090010079
-	 </p>
-	 <p>Email: info@dasaactravels.com</p>
-	 <h3>Address:</h3>
-	<address>
-	Adeleye & Adeleye Suite, <br />
-	Investment House (7th floor)<br /> 21/25, Broad Street By CMS Bus-stop,<br /> Lagos island,<br /> Lagos.
-	</address>
-	</section>
-	<section id="socialicon">
-	<h3>Conect With us:</h3>
-		<ul id="sxc">
-			<li><a href="uc.php"> <img src="<?php echo base_url(); ?>images/imgs/general/fb.png"> </a></li>
-			<li><a href="http://www.twitter.com/DasaacTravels"> <img src="<?php echo base_url(); ?>images/imgs/general/tw.png"> </a></li>
-			<li><a href="uc.php"> <img src="<?php echo base_url(); ?>images/imgs/general/in.png"> </a></li>
-			<!--<li><a href="uc.php"> <img src=""> </a></li>-->
-		</ul> <br />
-		<br />
-		<h3>GDS Partners:</h3>
-		<ul id="prtns">
-			<li><img src="<?php echo base_url(); ?>images/imgs/general/galileo.png"></li>
-			<li><img src="<?php echo base_url(); ?>images/imgs/general/amadeus.png"></li>
-	<!--		<li><a href="uc.php"> <img src=""> </a></li>   -->
-		</ul>
-	</section>
-	
-	
-	 <section id="prtn">
+	        
+        <div class="container-fluid" style="background-color: #A9A9A9; margin-top: 5px; padding-bottom: 10px;">
+           <div class="row">
+            <div class="col-md-3 col-md-offset-1">
+                <section id="footercaddress">
+                     <h3>Contact Us:</h3>
+                     <p>
+                     phone: 09090010078, 09090010079
+                     </p>
+                     <p>Email: info@dasaactravels.com</p>
+                     <h3>Address:</h3>
+                    <address>
+                    <strong>Adeleye & Adeleye Suite, </strong><br />
+                    Investment House (7th floor)<br /> 21/25, Broad Street By CMS Bus-stop,<br /> Lagos island,<br /> Lagos.
+                    </address>
+                </section>
+            </div>
+            
+            <div class="col-md-3 col-md-offset-1">
+                <section id="socialicon">
+                    <h3>Conect With us:</h3>
+                    <ul id="sxc">
+                    <li><a href="www.facebook.com/dasaactours"> <i style="color:#3b5998;" class="fa fa-facebook-square fa-2x"></i>  </a></li>
+                    <li><a href="http://www.twitter.com/DasaacTravels"><i style="color:#1da1f2;" class="fa fa-twitter-square fa-2x"></i>  </a></li>
+                    <li><a href="uc.php"><i style="color:#0077b5;" class="fa fa-linkedin-square fa-2x"></i>  </a></li>
+                    <!--<li><a href="uc.php"> <img src=""> </a></li>-->
+                    </ul> <br />
+                    <br />
+                    <h3>GDS Partners:</h3>
+                    <ul id="prtns">
+                        <li><img src="<?php echo base_url(); ?>assets/img/general/galileo.png"></li>
+                        <li><img src="<?php echo base_url(); ?>assets/img/general/amadeus.png"></li>
+                    <!--<li><a href="uc.php"> <img src=""> </a></li>   -->
+                    </ul>
+                    </section>
+            </div>
+            
+            <div class="col-md-3">
+                <section id="prtn">
 	 <div id="ap1">
 	 <h3>Airline Partners</h3>
 		<ul id="alogo">
-			<li> <img src="<?php echo base_url(); ?>images/imgs/general/ek.png"> </li>
-			<li> <img src="<?php echo base_url(); ?>images/imgs/general/qr.png"> </li>
-			<li> <img src="<?php echo base_url(); ?>images/imgs/general/tk.png"> </li>
-			<li> <img src="<?php echo base_url(); ?>images/imgs/general/lh.png"> </li>
-			<li><img src="<?php echo base_url(); ?>images/imgs/general/ey.png"> </li>
+			<li> <img src="<?php echo base_url(); ?>assets/img/general/ek.png"> </li>
+			<li> <img src="<?php echo base_url(); ?>assets/img/general/qr.png"> </li>
+			<li> <img src="<?php echo base_url(); ?>assets/img/general/tk.png"> </li>
+			<li> <img src="<?php echo base_url(); ?>assets/img/general/lh.png"> </li>
+			<li><img src="<?php echo base_url(); ?>assets/img/general/ey.png"> </li>
 		</ul>
 	 </div>
 	 <div id="hp1">
@@ -491,117 +422,84 @@
 		</ul>
 	 </div>
 	 </section>
-	 
-	 
-	 <section id="bnv">
-		<ul>
-			<li><a href="uc.php">About us |</a></li>
-			<li><a href="uc.php">FAQ |</a></li>
-			<li><a href="uc.php">Careers |</a></li>
-			<li><a href="uc.php"> Site Map |</a></li>
-			<li><a href="uc.php"> Contact us |</a></li>
-			<li><a href="uc.php">Terms & Conditions </a></li>
-		</ul>	
-			
-	 </section>
-	</footer>
 	
-	<footer class="second">
-	<section id="se1">
-	<p>
-	  copy right © <?php echo date(Y); ?>: Dasaac Travels & Tours ltd
-	</p>
-	</section>
-	<section id="se2">
-	<p>
-	
-	Designed and Managed by: <a href="http://www.4Eleventech.com"> <img src="" /><span>4Eleven Technology ltd</span></a>
-	</p>
-	</section>
-	</footer>
+     </div>
+       
+        
+    <div class="col-md-12">
+        <span class="visibe-md-inline" id="bnv">
+            <a class="btn btn-default btn-sm" href="<?php print base_url(); ?>flight/aboutus" role="button">About us</a>
+               <a class="btn btn-default btn-sm" href="<?php print base_url(); ?>flight/faq" role="button">FAQ</a>
+               <a class="btn btn-default btn-sm" href="<?php print base_url(); ?>careers" role="button">Careers</a>
+               <a class="btn btn-default btn-sm" href="<?php print base_url(); ?>flight/sitemap" role="button"> Site Map</a>
+               <a class="btn btn-default btn-sm" href="<?php print base_url(); ?>flight/contactus" role="button"> Contact us</a>
+                <a class="btn btn-default btn-sm" href="<?php print base_url(); ?>flight/terms" role="button">Terms & Conditions </a>           			
+         </span>
+        
+    </div>
+  </div>
+
+</div>
+
+<div class="container-fluid" style="background-color: #8D652F; padding: 10px 0px;">
+    <div class="col-md-12">
+      <div class="col-md-6">
+         <p class="col-md-6 col-md-offset-3" style="color: #fff;  font-size: 1.2em;">Copyright 2017: Dasaac Travels ltd</p>         
+      </div>
+      <div class="col-md-6">
+         <p class="col-md-6 col-md-offset-3" style="color: #fff;  font-size: 1.2em;">Designed by: 4Eleven Technology ltd</p>          
+      </div>
+    </div>
+</div>
+
 <script src="<?php echo base_url(); ?>assets/vendor/jquery/dist/jquery.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/jquery-ui/jquery-ui.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/vendor/jquery-flot/jquery.flot.js"></script>
-<script src="<?php echo base_url(); ?>assets/vendor/jquery-flot/jquery.flot.resize.js"></script>
-<script src="<?php echo base_url(); ?>assets/vendor/jquery-flot/jquery.flot.pie.js"></script>
-<script src="<?php echo base_url(); ?>assets/vendor/flot.curvedlines/curvedLines.js"></script>
-<script src="<?php echo base_url(); ?>assets/vendor/jquery.flot.spline/index.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/iCheck/icheck.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/peity/jquery.peity.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/sparkline/index.js"></script>
-
+<script src="<?php echo base_url(); ?>assets/dist/sweetalert.min.js"></script>
 <!-- App scripts -->
 <script src="<?php echo base_url(); ?>assets/scripts/homer.js"></script>
 <script src="<?php echo base_url(); ?>assets/scripts/charts.js"></script>
-<script>
 
-    $(function () {
-
-        /**
-         * Flot charts data and options
-         */
-        var data1 = [ [0, 55], [1, 48], [2, 40], [3, 36], [4, 40], [5, 60], [6, 50], [7, 51] ];
-        var data2 = [ [0, 56], [1, 49], [2, 41], [3, 38], [4, 46], [5, 67], [6, 57], [7, 59] ];
-
-        var chartUsersOptions = {
-            series: {
-                splines: {
-                    show: true,
-                    tension: 0.4,
-                    lineWidth: 1,
-                    fill: 0.4
-                },
-            },
-            grid: {
-                tickColor: "#f0f0f0",
-                borderWidth: 1,
-                borderColor: 'f0f0f0',
-                color: '#6a6c6f'
-            },
-            colors: [ "#62cb31", "#efefef"],
-        };
-
-        $.plot($("#flot-line-chart"), [data1, data2], chartUsersOptions);
-
-        /**
-         * Flot charts 2 data and options
-         */
-        var chartIncomeData = [
-            {
-                label: "line",
-                data: [ [1, 10], [2, 26], [3, 16], [4, 36], [5, 32], [6, 51] ]
-            }
-        ];
-
-        var chartIncomeOptions = {
-            series: {
-                lines: {
-                    show: true,
-                    lineWidth: 0,
-                    fill: true,
-                    fillColor: "#64cc34"
-
-                }
-            },
-            colors: ["#62cb31"],
-            grid: {
-                show: false
-            },
-            legend: {
-                show: false
-            }
-        };
-
-        $.plot($("#flot-income-chart"), chartIncomeData, chartIncomeOptions);
-
-
-
-    });
+	<script>
+	$(document).ready(function(){
+		
+	$('input[type=submit]').click(function(){
+			swal({
+  title: "Are you sure",
+  text: "",
+  type:input,
+  showCancelButton: true,
+  closeOnConfirm: false,
+  animation: "slide-from-top",
+  inputPlaceholder: ""
+},
+function(inputValue){
+	
+  if (inputValue === false) return false;
+  
+  if (inputValue === "") {
+    swal.showInputError("You need to write an update!");
+    return false
+  }
+  
+  swal("Nice!", "Your Update is successful: ", "success");
+});
+		
+	});	
+		
+	});
 
 </script>
+<script>
+  $( function() {
+    $( "#accordion" ).accordion();
+  } );
+  </script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

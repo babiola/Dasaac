@@ -34,7 +34,7 @@
 		 ||
         $this->router->fetch_method() == "delete"
 		||
-        $this->router->fetch_method() == "availablejobs"
+        $this->router->fetch_method() == "available"
 		||
         $this->router->fetch_method() == "status_change"
 		||
@@ -47,6 +47,10 @@
         $this->router->fetch_method() == "newjob"
 		||
         $this->router->fetch_method() == "joblist"
+		||
+        $this->router->fetch_method() == "publish"
+		||
+        $this->router->fetch_method() == "get_job_list"
     ) {
 		
 		
@@ -123,7 +127,7 @@
                 </ul>
             </div>
         </div>
-        <div class="navbar-right" style="background-color:#8d652f;">
+        <div class="navbar-right" style="background-color:#3e474f;">
             <ul class="nav navbar-nav no-borders">
                 <li class="dropdown">
                     <a class="pull-right btn btn-xs " title="Logout" href="<?php echo base_url(); ?>dashboard/logout"><i style="color:#fff;" class="pe-7s-upload pe-rotate-90"></i></a>                       
@@ -147,13 +151,13 @@
             </div>
         </div>
 
-        <ul class="nav" id="side-menu" style="color:#fff;" >
+        <ul class="nav" id="side-menu" style="color:#fff; background-color:#3e474f;" >
             <li>
                 <a href="#"><span class="nav-label">Transaction</span><span class="fa arrow"></span></a>
                  <ul class="nav nav-second-level" style="color:#fff;">
-                    <li><a href="<?php print base_url(); ?>deals/flight">Today Flight</a></li>
+                    <li><a href="<?php print base_url(); ?>transaction/flight">Today Flight</a></li>
                     <li><a href="<?php print base_url(); ?>package/index">Today Package</a></li>
-					<li><a href="<?php print base_url(); ?>deals/index">Today Deals</a></li>
+					<!--<li><a href="<?php print base_url(); ?>deals/index">Today Deals</a></li>-->
 					<li><a href="<?php print base_url(); ?>hotelmanager/index">Today Hotel</a></li>
                 </ul>
             </li>
@@ -176,15 +180,22 @@
 			 <li>
                 <a href="#"><span class="nav-label">Deal</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php print base_url(); ?>deals/index">All Deals</a></li>
+                    <li><a href="<?php print base_url(); ?>deals/available">All Deals</a></li>
                     <li><a href="<?php print base_url(); ?>deals/manage">Manage Deals</a></li>
+                </ul>
+            </li>
+			 <li>
+                <a href="#"><span class="nav-label">Brochure</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?php print base_url(); ?>brochure/available">All Brochure</a></li>
+                    <li><a href="<?php print base_url(); ?>brochure/manage">Manage Brochure</a></li>
                 </ul>
             </li>
 			 <li>
                 <a href="#"><span class="nav-label">Jobs</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
 				<li><a href="<?php print base_url(); ?>jobs/newjob">Add Jobs</a></li>
-                    <li><a href="<?php print base_url(); ?>jobs/availablejobs">Available Jobs</a></li>
+                    <li><a href="<?php print base_url(); ?>jobs/available">Available Jobs</a></li>
                     
                 </ul>
             </li>
@@ -203,7 +214,7 @@
                     <li><a href="<?php print base_url(); ?>transaction">All Report</a></li>
                 </ul>
             </li>
-			 <li class="active">
+			 <li class="active" style="background-color:#3e474f !important;">
             <a href="<?php print base_url(); ?>dashboard"> <span class="nav-label"><i class="fa fa-tasks"></i> Dashboard</span></a>
             </li>
         </ul>
@@ -211,7 +222,7 @@
 </aside>
 
 <!-- Main Wrapper -->
-<div id="wrapper" style="background-color: #8d652f;">
+<div id="wrapper" style="background-color: #74818d;">
              <?php $this->load->view($module . '/' . $view_file); ?>
    
     <!-- Footer-->
@@ -309,86 +320,9 @@
             ]
         });
 </script>
-		
-		<script>
-
-    $(function () {
-
-        /**
-         * Flot charts data and options
-         */
-        var data1 = [ [0, 55], [1, 48], [2, 40], [3, 36], [4, 40], [5, 60], [6, 50], [7, 51] ];
-        var data2 = [ [0, 56], [1, 49], [2, 41], [3, 38], [4, 46], [5, 67], [6, 57], [7, 59] ];
-
-        var chartUsersOptions = {
-            series: {
-                splines: {
-                    show: true,
-                    tension: 0.4,
-                    lineWidth: 1,
-                    fill: 0.4
-                },
-            },
-            grid: {
-                tickColor: "#f0f0f0",
-                borderWidth: 1,
-                borderColor: 'f0f0f0',
-                color: '#6a6c6f'
-            },
-            colors: [ "#62cb31", "#efefef"],
-        };
-
-        $.plot($("#flot-line-chart"), [data1, data2], chartUsersOptions);
-
-        /**
-         * Flot charts 2 data and options
-         */
-        var chartIncomeData = [
-            {
-                label: "line",
-                data: [ [1, 10], [2, 26], [3, 16], [4, 36], [5, 32], [6, 51] ]
-            }
-        ];
-
-        var chartIncomeOptions = {
-            series: {
-                lines: {
-                    show: true,
-                    lineWidth: 0,
-                    fill: true,
-                    fillColor: "#64cc34"
-
-                }
-            },
-            colors: ["#62cb31"],
-            grid: {
-                show: false
-            },
-            legend: {
-                show: false
-            }
-        };
-
-        $.plot($("#flot-income-chart"), chartIncomeData, chartIncomeOptions);
-
-
-
-    });
-
-</script>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-4625583-2', 'webapplayers.com');
-        ga('send', 'pageview');
-
-    </script>
 	  <script>
             $(function () {
-                var msgp = $('#msg-container');
+                var msgp = $('.message-info');
                 setTimeout(function () {
                     msgp.fadeOut('slow', function () {
                         $(this).text('').fadeIn();

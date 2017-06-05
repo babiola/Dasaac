@@ -40,8 +40,18 @@ class Transaction extends MX_Controller {
         $data['view_file'] = 'reportlist';
         $this->loadView($data);
     }
+	 public function flight() {
+        $data['Flight']=$this->get_today_flight()->result();
+		$data['view_file']='flightView';
+		 $this->loadView($data);
+    }
 	function get_custom_query(){
 		$sql = "SELECT * FROM transaction ORDER by REQUEST_DATE DESC";
+		$query = $this->_custom_query($sql);
+		return $query;
+	}
+	function get_today_flight(){
+		$sql = "SELECT * FROM flightreservation WHERE DATE_FORMAT(BOOKING_DATE,'%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d') ORDER by BOOKING_DATE DESC";
 		$query = $this->_custom_query($sql);
 		return $query;
 	}
@@ -54,7 +64,7 @@ class Transaction extends MX_Controller {
 	 $this->get_transaction_list($data);
  }
  
- 
+
      public function reportlist() {
         $this->get_report_list();
     }
@@ -73,9 +83,6 @@ class Transaction extends MX_Controller {
 		$report = $_POST['reportType'];
 		 $start = $_POST['s_date'];
 		 $end = $_POST['e_date'];
-		 
-		
-		  
 		 if ($report === 'flightreservation'){
 				$sql = "select * from flightreservation where BOOKING_DATE 
 		between '$start' and '$end'ORDER BY BOOKING_DATE DESC ";

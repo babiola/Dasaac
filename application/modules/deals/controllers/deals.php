@@ -35,50 +35,142 @@ class Deals extends MX_Controller {
     }
 
     function index() {
-        $data['title'] = 'Dasaac Administrator Panel.';
+        $data['title'] = 'Dasaac Travels and Tour Latest deals.';
+		$data['deal'] = $this->published()->result();
         $data['view_file'] = 'index';
-        $this->loadView($data);
+        $this->loadViews($data);
     }
 	
     function loadView($data) {
         $data['module'] = 'deals';
         echo Modules::run('templ/templCon', $data);
     }
-
- 
-	
-function getDataFromPost(){
-	$data = array();
-			$data['FIRSTNAME'] = $this->input->post('fname', TRUE);
-			$data['LASTNAME'] = $this->input->post('lname', TRUE);
-			$data['EMAIL'] = $this->input->post('email', TRUE);
-			$data['ACCOUNT'] = $this->input->post('account', TRUE);
-			$data['PASSWORD'] = $this->input->post('pwd', TRUE);
-        return $data;
-}
-   function flight(){
-	  $data['flight'] = $this->getAll_flight()->result();
-	   $data['view_file'] = 'home';
-        $this->loadView($data);
-   }
-
-    function getAll_flight() {
-		$sql = "SELECT * FROM flightreservation where DATE_FORMAT(BOOKING_DATE, '%Y-%m-%d') = DATE_FORMAT(sysdate(), '%Y-%m-%d')ORDER BY DATE_FORMAT(BOOKING_DATE, '%Y-%m-%d') DESC";
-		$query = $this->_custom_query($sql);
-		return $query;
+ function loadViews($data) {
+        $data['module'] = 'deals';
+        echo Modules::run('templ/templContent', $data);
     }
+ 
+	function available() {
+        $data['title'] = 'Dasaac Administrator Panel.';
+		$data['deals'] = $this->getAll()->result();
+        $data['view_file'] = 'deals';
+        $this->loadView($data);
+    }
+	 function submit(){
+			$this->form_validation->set_rules('dealid', 'Deals Id','trim|required');
+			$this->form_validation->set_rules('title', 'Deal Title','trim|required');
+			$this->form_validation->set_rules('desc', 'Description','trim|required');
+		if ($this->form_validation->run() === FALSE){
+			$data1['msg'] = 'Please Provide a valid information';	
+			$data['title'] = 'Dasaac Deals Management';
+	$data['view_file'] = 'dealform';
+	$this->loadView($data);
+		}
+		else{
+			$config['upload_path'] = "./uploads/";
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size'] = '1000';
+			$config['max_width']  = '';
+			$config['max_height']  = '';
+			$config['overwrite'] = TRUE;
+			$config['remove_spaces'] = TRUE;
+			$this->load->library('upload', $config);
+			if(!$this->upload->do_upload('user_file')){
+				$data['msg']=$this->upload->display_errors('','');
+					$data['title'] = 'Dasaac Deals Management';
+			$data['view_file'] = 'dealform';
+			$this->loadView($data);
+			}else{	
+				$data = $this->get_data_deals_post();
+				$this->_insert($data);
+				$data['msg'] = '<div class="boxed-wrapper">Job Successfully added</div>';
+				$data['title'] = 'Dasaac Deals Management';
+				$data['view_file'] = 'dealform';
+				$this->loadView($data);
+				}
+	
+		}	
+			
+ }
+ function alldeals($data){
+		$data['title'] = 'Dasaac Deals Management';
+		$data['deals'] = $this->getAll()->result();
+        $data['view_file'] = 'deals';
+        $this->loadView($data);
+ }
+	public function get_data_deals_post() {
+			$data = array();
+			$data['deal_id'] = $this->input->post('dealid', TRUE);
+			$data['NAME'] = $this->input->post('title', TRUE);
+			$data['path'] =  $this->upload->data('file_name');
+			$data['createdby'] = $_SESSION['username'];
+			$data['description'] = $this->input->post('desc', TRUE);
+			$data['Date_Created	'] = date('y-m-d h:i:s');
+			$data['Date_published'] = '';
+			$data['status'] = 'not published';
+			$data['publishedby'] = '';
+        return $data;
+    }
+	
+	function publish ($id){
+		$value = "";
+        $query = $this->get_where($id)->result();
+		$data['Date_published'] = date('y-m-d h:i:s');
+		$data['status'] = 'published';
+		$data['publishedby'] = $_SESSION['username'];
+        $this->_update($id,$data);
+        foreach ($query as $row) {
+            $value = $row->Name;
+        }
+       $process = $data['msg'] = " $value, published sucessfully";
+        $this->log($process);
+        $this->alldeals($data);
+	}
+	 function delete($id) {
+        $value = "";
+        $query = $this->get_where($id)->result();
+        $this->_delete($id);
+        foreach ($query as $row) {
+            $value = $row->Name;
+        }
+       $process = $data['msg'] = " $value, deleted sucessfully";
+        $this->log($process);
+        $this->alldeals($data);
+    }
+
 function manage(){
 	$data['title'] = 'Dasaac Deals Management';
 	$data['view_file'] = 'dealform';
 	$this->loadView($data);
 }
-  
+ function published() {
+	 $sql = "select * from deals where status = 'published' order by Date_published desc limit 8";
+        $query = $this->_custom_query($sql);
+        return $query;
+    }
+
+  function _insert($data){
+	$this->load->model('mdl_deals');
+    $this->mdl_deals->_insert($data);
+}
+function _delete($data){
+	$this->load->model('mdl_deals');
+    $this->mdl_deals->_delete($data);
+}
+function _update($id,$data){
+	$this->load->model('mdl_deals');
+    $this->mdl_deals->_update($id,$data);
+}
     function _custom_num_rows_query($mysql_query) {
         $this->load->model('mdl_deals');
         $query = $this->mdl_deals->_custom_num_rows_query($mysql_query);
         return $query;
     }
-
+ function getAll() {
+        $this->load->model('mdl_deals');
+        $query = $this->mdl_deals->getAll($table);
+        return $query;
+    }
       function _custom_query($mysql_query) {
         $this->load->model('mdl_deals');
         $query = $this->mdl_deals->_custom_query($mysql_query);
@@ -89,6 +181,14 @@ function manage(){
         $this->load->model('mdl_deals');
         $query = $this->mdl_deals->get_where($id);
         return $query;
+    }
+	// error log
+    function log($process) {
+        $process_user = $_SESSION['username'];
+		$url = $_SERVER['REMOTE_ADDR'];
+		$logged_date = date('Y-m-d h:i:s');
+        $query = "INSERT INTO TS_LOG(process,process_user,urlaccessed,logged_date)VALUES ('$process','$process_user','$url','$logged_date')";
+        $this->_custom_query($query);
     }
 
 }

@@ -1,7 +1,7 @@
 ﻿<div class="small-header">
     <div class="hpanel">
         <div class="panel-body">
-            <div id="hbreadcrumb" class="pull-right">
+            <div id="hbreadcrumb" class="pull-right m-t-lg">
                 <ol class="hbreadcrumb breadcrumb">
                     <li><a href="<?php echo base_url();?>dashboard">Dashboard</a></li>
                     <li>
@@ -19,8 +19,6 @@
         </div>
     </div>
 </div>
-
-<div class="content">
     <div class="row">
         <div class="col-lg-12">
 			            <div class="hpanel">
@@ -81,6 +79,6 @@
             </div>
         </div>
     </div>
-</div>        
+      
      
        

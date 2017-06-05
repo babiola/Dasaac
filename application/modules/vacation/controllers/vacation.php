@@ -35,7 +35,7 @@ class Vacation extends MX_Controller {
     }
 
     function index() {
-        $data['title'] = 'Dasaac Travels Package manager';
+        $data['title'] = 'Dasaac Travels Vacation Gallery';
 		 //$data['hotel'] = $this->get_custom_query()->result();
         $data['view_file'] = 'index';
         $this->loadView($data);

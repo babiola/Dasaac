@@ -13,8 +13,10 @@ class Flight extends MX_Controller {
     }
 
    function index() {
-        $data['title'] = 'Welcome Dasaac Travels';
+        $data['title'] = 'Welcome Dasaac Travels and Tour';
 		$data['view_file'] = 'index';
+		$process ='home page view';
+		$this->log($process);
         $this->loadView($data);
         //$this->load->view('index', $data);
     }
@@ -26,12 +28,16 @@ class Flight extends MX_Controller {
     function career() {
        $data['title'] = 'Choose your career with Dasaac Travels.';
         $data['view_file'] = 'career';
+		$process ='career page view';
+		$this->log($process);
         $this->loadView($data);
     }
 
     public function contactus() {
 		$data['title'] = 'Get in touch with  Dasaac Travels';
         $data['view_file'] = 'contactus';
+		$process ='contactus page view';
+		$this->log($process);
         $this->loadView($data);
     }
 
@@ -39,59 +45,22 @@ class Flight extends MX_Controller {
 		
 		$data['title'] = ' Job Openings at Dasaac Travels';
         $data['view_file'] = 'jobs';
-        $this->loadView($data);
-    }
-
-    public function brochure() {
-		$data['title'] = ' Dasaac Travels';
-        $data['view_file'] = 'brochure';
+		$process ='jobs page view';
+		$this->log($process);
         $this->loadView($data);
     }
 
     public function aboutus() {
 		$data['title'] = ' Dasaac Travels';
         $data['view_file'] = 'aboutus';
+		$process ='aboutus page view';
+		$this->log($process);
         $this->loadView($data);
     }
 	
-	 public function admin() {
-		$data['title'] = ' Dasaac Travels administrator panel';
-       $this->load->view('admin', $data);
-    }
-	public function login() {
-		$this->form_validation->set_rules('username', 'Username','trim|required');
-			$this->form_validation->set_rules('pwd', 'Password','trim|required');
-			if($this->form_validation->run()){
-				$username = $this->input->post('username', TRUE);
-				$password = $this->input->post('pwd', TRUE);
-				if($this->check_user($username)){
-					if($this->password_check($password)){
-						$this->user_session($username);
-						if (isset($_SESSION['logged_in'])&&($_SESSION['status']==='0')) {
-							
-							redirect('/dashboard/');
-						}
-						}else{
-							$data['msg']= 'password is incorrect';
-						$this->load->view('admin', $data);
-						}
-				
-				}else{
-					$data['msg']= 'Username is incorrect';
-					$this->load->view('admin', $data);
-				}
-		
-			}else{
-				$data['msg']= 'Please fill in your details';
-				$this->load->view('admin', $data);
-		}
-	}
-	
-	
-	
 	function bookflight(){
 			$this->form_validation->set_rules('sname', 'Surname','trim|required');
-			$this->form_validation->set_rules('othernames', 'Other Names','trim|required');
+			$this->form_validation->set_rules('othernames', 'Other Names','trim');
 			$this->form_validation->set_rules('title', 'Title', 'trim');
 			$this->form_validation->set_rules('leavefrom', 'Leaving from','trim|required');
 			$this->form_validation->set_rules('destination', 'Destination', 'trim|required');
@@ -100,15 +69,43 @@ class Flight extends MX_Controller {
 			$this->form_validation->set_rules('email', 'Email', 'trim|required');
 			$this->form_validation->set_rules('flightclass','Flight Class','trim|required');
 		if ($this->form_validation->run() === FALSE){
-		$data['msg'] = 'Please Provide a valid information';
-		$this->index($data);
+		$data['msg'] = '<div class="alert alert-warning"><i class="fa fa-warning"></i>Please Provide a valid information</div>';
+		$data['title'] = 'Welcome Dasaac Travels';
+		$data['view_file'] = 'index';
+        $this->loadView($data);
 		}else{
 		$data = $this->get_data_flight_post();
 		$this->_insert($data);
-		$data['msg'] = 'thank you for doing business with us! we will get back to you shortly';
-		$this->index($data);
+		$process = $data['msg'] = '<div class="alert alert-success"><i class="fa fa-warning"></i>thank you for doing business with us! we will get back to you shortly</div>';
+		$this->log($process);
+		$data['title'] = 'Welcome Dasaac Travels';
+		$data['view_file'] = 'index';
+        $this->loadView($data);
 		
 		}
+	}
+	function allcareers(){
+		$data['title'] = 'Dasaac Travels and Tour all career';
+		$data['view_file'] = 'careerView';
+        $this->loadView($data);
+	}
+	function faq(){
+		$data['title'] = 'Dasaac Travels Frequently asked questions';
+		$data['view_file'] = 'faqView';
+        $this->loadView($data);
+		
+	}
+	function sitemap(){
+	$data['title'] = 'Dasaac Travels and Tour Site Map';
+		$data['view_file'] = 'SitemapView';
+        $this->loadView($data);	
+		
+	}
+	function terms(){
+		$data['title'] = 'Dasaac Travels and Tour Terms and Conditions';
+		$data['view_file'] = 'termsView';
+        $this->loadView($data);
+		
 	}
 # GET DATA FROM bookingflight POST
 	public function get_data_flight_post() {
@@ -126,6 +123,8 @@ class Flight extends MX_Controller {
 			$data['DESTINATION'] = $this->input->post('destination', TRUE);
 			$data['FLIGHTCLASS'] = $this->input->post('flightclass', TRUE);
 			$data['ARRIVAL_DATE'] = $this->input->post('arrivaldate', TRUE);
+			$data['PHONE'] = $this->input->post('phnno', TRUE);
+			
         return $data;
     }
 function contactform(){
@@ -137,29 +136,29 @@ function contactform(){
 			$this->form_validation->set_rules('email', 'Email Address', 'trim');
 			
 	if ($this->form_validation->run() ===FALSE){
-		$data['msg'] = "Thank you for contacting us Please fill all field correctly";
-		redirect('flight/contactus');
+		$data['msg'] = '<div class="alert alert-success"><i class="fa fa-warning"></i>Thank you for contacting us Please fill all field correctly</div>';
+		redirect('flight/contactus',$data);
 		
 	}else{
 		$data = $this->get_data_contactform_post();
 		$this->contactform_insert($data);
-		$data['msg'] = "Thank you for contacting us we will get back to you shortly";
+		$data['msg'] =  '<div class="alert alert-success"><i class="fa fa-warning"></i>Thank you for contacting us we will get back to you shortly</div>';
 		
-		redirect('flight/contactus');
+		redirect('flight/contactus',$data);
 		
 	}
 	
 }
 function subscrible(){
 	if($this->form_validation->set_rules('newsletter', 'SUBSCRIBE TO OUR NEWSLETTER', 'trim|required') === FALSE){
-		$data['msg'] = "Please enter email to subscrible";
+		$data['msg'] =' <div class="alert alert-danger"><i class="fa fa-warning"></i>Please enter email to subscrible</div>';
 		$data['view_file'] = 'index';
 		$this->loadView($data);
 	}else{
 		$newsletter = $this->input->post('newsletter', TRUE);
 		 $sql = "insert into newsletter(EMAIL)values('$newsletter')";
 		 $this->_custom_query($sql);
-		 $data['msg'] = "Thank you for subscribing to our news letter us we will get back to you shortly";
+		 $data['msg'] =  '<div class="alert alert-success"><i class="fa fa-warning"></i>Thank you for subscribing to our news letter us we will get back to you shortly</div>';
 		/* $data['view_file'] = 'index';
 		$this->loadView($data); */
 		redirect('flight');
@@ -173,80 +172,23 @@ function subscrible(){
 			$data['SEX'] = $this->input->post('sex', TRUE);
 			$data['FIRSTNAME'] = $this->input->post('firstname', TRUE);
 			$data['LASTNAME'] = $this->input->post('lastname', TRUE);
+			$data['OTHERNAME'] = $this->input->post('othernames', TRUE);
 			$data['EMAIL'] = $this->input->post('email', TRUE);
 			$data['PHONE'] = $this->input->post('phone', TRUE);
 			$data['MESSAGE'] = $this->input->post('message', TRUE);
 			$data['REQUEST_DATE'] = date('y-m-d h:i:s');
         return $data;
     }
-
-
-    public function get_data_flight_db() {
-        $query = $this->getAll()->result();
-        foreach ($query as $row) {
-            $data['agent_id'] = $row->AGENT_ID;
-            $data['msisdn'] = $row->MSISDN;
-            $data['account_id'] = $row->ACCOUNT_ID;
-            $data['EMAIL'] = $row->EMAIL;
-            $data['status'] = $row->STATUS;
-            //$data['createdBy'] = user;
-        }
-        return $data;
-    }
-
-    function delete() {
-        $id = $this->uri->segment(3);
-        $data['STATUS'] = '0';
-        $value = "";
-        $query = $this->get_where($id)->result();
-        $this->_update($id, $data);
-        foreach ($query as $row) {
-            $value = $row->MSISDN . '  ' . $row->ACCOUNT_ID . ' ' . $row->EMAIL;
-        }
-        $process = $data['msg'] = "$value Deleted Sucessfully";
-        $this->log($process);
-        $this->agentlist();
-    }
-
     function cancel() {
         // redirect to record list page
         redirect('staff/index/', 'refresh');
     }
-function check_user($username){
-		$query = "select * from DASAAC_USER where username = '$username'";
-		$result = $this->_custom_num_rows_query($query);
-        if ($result > 0) {
-            return true;
-        }
-	}
-	function password_check($password){
-		$pwd = md5($password);
-		$query = "select * from DASAAC_USER where PASSWORD = '$pwd'";
-		$result = $this->_custom_num_rows_query($query);
-        if ($result > 0) {
-            return true;
-        }
-	}
-	function user_session($username) {
-        $query = $this->get_where_custom_user(username,$username)->result();
-        foreach ($query as $row) {
-            $newdata = array(
-                'username' => $row->USERNAME,
-				'userid' => $row->USERID,
-				'status' => $row->STATUS,
-                'logged_in' => TRUE
-            );
-        }
-		/* print_r($newdata);
-		die(); */
-        $this->session->set_userdata($newdata);
-    }
-	
+ 	// error log
     function log($process) {
         $process_user = $_SESSION['username'];
-        $process = "AGENT  : " . $process;
-        $url = $_SERVER['REMOTE_ADDR'];
-        $query = "INSERT INTO DATA_ADJUST_LOG (process,process_user,urlaccessed)VALUES ('$process','$process_user','$url')";
+		$url = $_SERVER['REMOTE_ADDR'];
+		$logged_date = date('Y-m-d h:i:s');
+        $query = "INSERT INTO TS_LOG(process,process_user,urlaccessed,logged_date)VALUES ('$process','$process_user','$url','$logged_date')";
         $this->_custom_query($query);
     }
 

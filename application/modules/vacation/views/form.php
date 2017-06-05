@@ -1,3 +1,4 @@
+  <div class="container-fluid">
   <div class="row">
         <div class="">
             <div class="hpanel">
@@ -22,4 +23,5 @@
 
                 </div>
             </div>
-        </div>
+        </div> </div>
+</div>
