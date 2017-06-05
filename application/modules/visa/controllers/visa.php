@@ -91,6 +91,7 @@ class Visa extends MX_Controller {
         $this->loadView($data);
  
  }
+ 
  function submit(){
 			$this->form_validation->set_rules('hotelname', 'Hotel Name','trim|required');
 			$this->form_validation->set_rules('categoryname', 'Category','trim|required');

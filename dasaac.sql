@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2017 at 12:24 PM
+-- Generation Time: Jun 05, 2017 at 10:01 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -19,6 +19,36 @@ SET time_zone = "+00:00";
 --
 -- Database: `dasaac`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `brochure`
+--
+
+CREATE TABLE `brochure` (
+  `ID` int(11) NOT NULL,
+  `brochureid` varchar(20) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `path` varchar(100) NOT NULL,
+  `createdby` varchar(100) NOT NULL,
+  `created_date` datetime NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `publishedby` varchar(100) NOT NULL,
+  `publish_date` datetime NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `pdf` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `brochure`
+--
+
+INSERT INTO `brochure` (`ID`, `brochureid`, `Name`, `path`, `createdby`, `created_date`, `status`, `publishedby`, `publish_date`, `description`, `pdf`) VALUES
+(2, 'Singapore001', 'Singapore Tour', 'broch1.jpg', 'alex', '2017-06-04 01:09:35', 'published', 'alex', '2017-06-04 01:09:44', 'Tour of Singapore for best of enjoyments', ''),
+(3, 'Honeymooner', 'Honeymoon Vacation', 'broch5.jpg', 'alex', '2017-06-04 01:46:13', 'published', 'alex', '2017-06-04 01:49:39', 'together forever', ''),
+(4, 'Honeymooner001', 'Honeymoon Vacation', 'Test_Invitation_08-Dec-2016.pdf', 'alex', '2017-06-04 03:10:29', 'published', 'alex', '2017-06-04 03:46:58', '', ''),
+(5, 'Safari001', 'ddddd', 'broch3.jpg', 'alex', '2017-06-04 03:44:29', 'published', 'alex', '2017-06-04 03:46:55', '', 'Implementing_a_Simple_Web_Service.pdf');
 
 -- --------------------------------------------------------
 
@@ -51,6 +81,7 @@ CREATE TABLE `contact` (
   `NATURE` varchar(20) NOT NULL,
   `FIRSTNAME` varchar(20) NOT NULL,
   `LASTNAME` varchar(20) DEFAULT NULL,
+  `OTHERNAME` varchar(50) DEFAULT NULL,
   `SEX` varchar(10) NOT NULL,
   `EMAIL` varchar(50) NOT NULL,
   `PHONE` varchar(15) NOT NULL,
@@ -62,9 +93,10 @@ CREATE TABLE `contact` (
 -- Dumping data for table `contact`
 --
 
-INSERT INTO `contact` (`CONTACT_ID`, `NATURE`, `FIRSTNAME`, `LASTNAME`, `SEX`, `EMAIL`, `PHONE`, `MESSAGE`, `REQUEST_DATE`) VALUES
-(7, 'enquiry', 'Abiola', 'Bello', 'female', 'abiola.bello@hotmail.com', '7036264305', 'please tell me more about what you do?', '2017-04-07 03:30:20'),
-(8, 'complaint', 'Bunmi', 'Afolabi', 'female', 'yao@nit.com.ng', '08065644552', 'please tell me about your company', '2017-04-09 00:53:21');
+INSERT INTO `contact` (`CONTACT_ID`, `NATURE`, `FIRSTNAME`, `LASTNAME`, `OTHERNAME`, `SEX`, `EMAIL`, `PHONE`, `MESSAGE`, `REQUEST_DATE`) VALUES
+(7, 'enquiry', 'Abiola', 'Bello', NULL, 'female', 'abiola.bello@hotmail.com', '7036264305', 'please tell me more about what you do?', '2017-04-07 03:30:20'),
+(9, 'enquiry', 'Zainab', 'Adebayo', NULL, 'female', 'abiola.bello@hotmail.com', '07036317484', 'I want to book a flight to mecca', '2017-04-17 02:23:28'),
+(10, 'complaint', 'Abiola', 'Bello', NULL, 'Male', 'abiola.bello@hotmail.com', '+2347036264305', 'wwwwwwwwwwwwwwww', '2017-06-03 09:00:01');
 
 -- --------------------------------------------------------
 
@@ -100,10 +132,24 @@ INSERT INTO `dasaac_user` (`USERID`, `USERNAME`, `PASSWORD`, `STATUS`, `USERTYPE
 
 CREATE TABLE `deals` (
   `ID` int(11) NOT NULL,
-  `Name` varchar(20) NOT NULL,
-  `Price` varchar(20) NOT NULL,
-  `Date_Created` datetime NOT NULL
+  `deal_id` varchar(60) NOT NULL,
+  `Name` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `path` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `Date_Created` datetime NOT NULL,
+  `createdby` varchar(100) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `publishedby` varchar(50) NOT NULL,
+  `Date_published` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `deals`
+--
+
+INSERT INTO `deals` (`ID`, `deal_id`, `Name`, `description`, `path`, `Date_Created`, `createdby`, `status`, `publishedby`, `Date_published`) VALUES
+(5, 'dasaac001', 'Deal for dubai', 'you''ll enjoy it', 'islamic-Ninja-Underscarf-Bonnet-Undercap-Hijab-Cap-muslim-Headwear-modal-hotsell-underscarf_jpg_220x220.jpg', '2017-06-04 01:03:16', 'alex', 'published', 'alex', '2017-06-04 06:30:44'),
+(6, 'dasaac002', 'Singapore tour', 'welcome to Singapore for a lifetime experience', 'Mer1.jpg', '2017-06-04 06:05:40', 'alex', 'published', 'alex', '2017-06-04 06:36:11');
 
 -- --------------------------------------------------------
 
@@ -127,25 +173,30 @@ CREATE TABLE `flightreservation` (
   `CHILDREN` varchar(3) NOT NULL,
   `INFANT` varchar(3) NOT NULL,
   `BOOKING_DATE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `STATUS` varchar(10) NOT NULL DEFAULT 'BOOKED'
+  `STATUS` varchar(10) NOT NULL DEFAULT 'BOOKED',
+  `PHONE` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `flightreservation`
 --
 
-INSERT INTO `flightreservation` (`ID`, `TITLE`, `SURNAME`, `OTHERNAME`, `EMAIL`, `FLIGHTTYPE`, `FLIGHTCLASS`, `DEPARTURE`, `DESTINATION`, `DEPARTURE_DATE`, `ARRIVAL_DATE`, `ADULT`, `CHILDREN`, `INFANT`, `BOOKING_DATE`, `STATUS`) VALUES
-(1, 'mr', 'bello', 'abi', 'abiola.bello@hotmail.com', 'Round Trip', 'Economy', 'lagos', 'london', '2017-04-05 00:00:00', '2017-04-29 00:00:00', '1', '0', '0', '0000-00-00 00:00:00', 'BOOKED'),
-(2, 'mr', '', '', '', 'Round Trip', 'Economy', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1', '0', '0', '0000-00-00 00:00:00', 'BOOKED'),
-(3, 'mrs', 'abiola', 'Bello', 'blue@blueprint.com', 'Round Trip', 'Economy', 'lagos', 'london', '2017-04-03 00:00:00', '0000-00-00 00:00:00', '1', '0', '0', '0000-00-00 00:00:00', 'BOOKED'),
-(4, 'ms', 'abiola', 'Abiola', 'bt@pr.com', 'Round Trip', 'Economy', 'usa', 'canada', '2017-04-19 00:00:00', '0000-00-00 00:00:00', '1', '0', '0', '0000-00-00 00:00:00', 'BOOKED'),
-(5, 'mr', 'bello', 'Abiola', 'abiola.bello@hotmail.com', 'Round Trip', 'Economy', 'lagos', 'london', '2017-04-04 00:00:00', '0000-00-00 00:00:00', '1', '0', '0', '0000-00-00 00:00:00', 'BOOKED'),
-(6, 'mr', 'bode', 'abodurin', 'yao@nit.com.ng', 'One Way', 'Business', 'lagos', 'China', '2017-04-02 00:00:00', '0000-00-00 00:00:00', '1', '2', '2', '0000-00-00 00:00:00', 'BOOKED'),
-(7, 'ms', 'Ijeoma', 'Collins', 'blue@blueprint.com', 'Multi-segment', 'First', 'Portugal', 'Spain', '2017-04-09 00:00:00', '0000-00-00 00:00:00', '2', '1', '0', '2017-04-08 06:09:36', 'BOOKED'),
-(8, 'mr', 'bode', 'madi', 'flash@nt.com.ng', 'Round Trip', 'Economy', 'usa', 'canada', '2017-04-02 00:00:00', '0000-00-00 00:00:00', '1', '0', '0', '2017-04-08 06:11:32', 'BOOKED'),
-(9, 'mr', 'abiola', 'Bello', 'abiola.bello@hotmail.com', 'One Way', 'First', 'lagos', 'canada', '2017-04-09 00:00:00', '2017-04-29 00:00:00', '1', '0', '0', '2017-04-08 06:20:16', 'BOOKED'),
-(10, 'mrs', 'Ijeoma', 'Maxiwell', 'flash@nt.com.ng', 'One Way', 'Business', 'Duubai', 'Australia', '2017-04-16 00:00:00', '2017-04-28 00:00:00', '1', '0', '0', '2017-04-08 19:12:41', 'BOOKED'),
-(11, 'ms', 'Ijeoma', 'Bello', 'yao@nit.ng', 'Multi-segment', 'Business', 'Portugal', 'canada', '2017-04-09 00:00:00', '2017-04-22 00:00:00', '1', '2', '0', '2017-04-10 11:45:28', 'BOOKED');
+INSERT INTO `flightreservation` (`ID`, `TITLE`, `SURNAME`, `OTHERNAME`, `EMAIL`, `FLIGHTTYPE`, `FLIGHTCLASS`, `DEPARTURE`, `DESTINATION`, `DEPARTURE_DATE`, `ARRIVAL_DATE`, `ADULT`, `CHILDREN`, `INFANT`, `BOOKING_DATE`, `STATUS`, `PHONE`) VALUES
+(1, 'mr', 'bello', 'abi', 'abiola.bello@hotmail.com', 'Round Trip', 'Economy', 'lagos', 'london', '2017-04-05 00:00:00', '2017-04-29 00:00:00', '1', '0', '0', '0000-00-00 00:00:00', 'BOOKED', NULL),
+(2, 'mr', '', '', '', 'Round Trip', 'Economy', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1', '0', '0', '0000-00-00 00:00:00', 'BOOKED', NULL),
+(3, 'mrs', 'abiola', 'Bello', 'blue@blueprint.com', 'Round Trip', 'Economy', 'lagos', 'london', '2017-04-03 00:00:00', '0000-00-00 00:00:00', '1', '0', '0', '0000-00-00 00:00:00', 'BOOKED', NULL),
+(4, 'ms', 'abiola', 'Abiola', 'bt@pr.com', 'Round Trip', 'Economy', 'usa', 'canada', '2017-04-19 00:00:00', '0000-00-00 00:00:00', '1', '0', '0', '0000-00-00 00:00:00', 'BOOKED', NULL),
+(5, 'mr', 'bello', 'Abiola', 'abiola.bello@hotmail.com', 'Round Trip', 'Economy', 'lagos', 'london', '2017-04-04 00:00:00', '0000-00-00 00:00:00', '1', '0', '0', '0000-00-00 00:00:00', 'BOOKED', NULL),
+(6, 'mr', 'bode', 'abodurin', 'yao@nit.com.ng', 'One Way', 'Business', 'lagos', 'China', '2017-04-02 00:00:00', '0000-00-00 00:00:00', '1', '2', '2', '0000-00-00 00:00:00', 'BOOKED', NULL),
+(7, 'ms', 'Ijeoma', 'Collins', 'blue@blueprint.com', 'Multi-segment', 'First', 'Portugal', 'Spain', '2017-04-09 00:00:00', '0000-00-00 00:00:00', '2', '1', '0', '2017-04-08 06:09:36', 'BOOKED', NULL),
+(8, 'mr', 'bode', 'madi', 'flash@nt.com.ng', 'Round Trip', 'Economy', 'usa', 'canada', '2017-04-02 00:00:00', '0000-00-00 00:00:00', '1', '0', '0', '2017-04-08 06:11:32', 'BOOKED', NULL),
+(9, 'mr', 'abiola', 'Bello', 'abiola.bello@hotmail.com', 'One Way', 'First', 'lagos', 'canada', '2017-04-09 00:00:00', '2017-04-29 00:00:00', '1', '0', '0', '2017-04-08 06:20:16', 'BOOKED', NULL),
+(10, 'mrs', 'Ijeoma', 'Maxiwell', 'flash@nt.com.ng', 'One Way', 'Business', 'Duubai', 'Australia', '2017-04-16 00:00:00', '2017-04-28 00:00:00', '1', '0', '0', '2017-04-08 19:12:41', 'BOOKED', NULL),
+(11, 'ms', 'Ijeoma', 'Bello', 'yao@nit.ng', 'Multi-segment', 'Business', 'Portugal', 'canada', '2017-04-09 00:00:00', '2017-04-22 00:00:00', '1', '2', '0', '2017-04-10 11:45:28', 'BOOKED', NULL),
+(12, 'mrs', 'Bello', 'Zainab', 'ade.zainab@outlook.com', 'One Way', 'First', 'lagos', 'canada', '2017-04-18 00:00:00', '2017-05-12 00:00:00', '1', '0', '0', '2017-04-17 13:21:19', 'BOOKED', NULL),
+(13, 'mr', 'Ijeoma', 'Bello', 'abiola.bello@hotmail.com', 'One Way', 'Economy', 'lagos', 'canada', '2017-04-02 00:00:00', '2017-04-02 00:00:00', '1', '0', '0', '2017-04-19 09:28:53', 'BOOKED', NULL),
+(14, 'mr', 'bello', 'Zainab', 'abiola.bello@hotmail.com', 'Round Trip', 'First', 'Portugal', 'london', '2017-06-04 00:00:00', '2017-06-15 00:00:00', '1', '0', '0', '2017-06-03 07:06:39', 'BOOKED', NULL),
+(15, 'mrs', 'bode', 'Bello', 'abiola.bello@hotmail.com', 'Round Trip', 'Economy', 'Surulere', 'london', '2017-06-05 00:00:00', '2017-06-15 00:00:00', '1', '0', '0', '2017-06-04 17:50:53', 'BOOKED', '7036264305');
 
 -- --------------------------------------------------------
 
@@ -164,6 +215,7 @@ CREATE TABLE `hotel` (
   `LOCATION` varchar(50) NOT NULL,
   `CATEGORY` varchar(20) NOT NULL,
   `EMAIL` varchar(50) NOT NULL,
+  `PHONE` varchar(15) NOT NULL,
   `BOOKING_DATE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `STATUS` varchar(10) NOT NULL DEFAULT 'BOOKED'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -172,16 +224,17 @@ CREATE TABLE `hotel` (
 -- Dumping data for table `hotel`
 --
 
-INSERT INTO `hotel` (`ID`, `SURNAME`, `OTHERNAME`, `HOTELTYPE`, `CHECKIN_DATE`, `CHECKOUT_DATE`, `OCCUPANT`, `LOCATION`, `CATEGORY`, `EMAIL`, `BOOKING_DATE`, `STATUS`) VALUES
-(1, 'Abiola', 'Bello', 'Apartment', '2017-04-13 00:00:00', '2017-04-14 00:00:00', '3', 'North', 'Luxury Hotel', 'abiola.bello@hotmail.com', '2017-04-24 23:00:00', 'BOOKED'),
-(2, 'Bello', 'Abiola', 'Apartment', '2017-04-28 00:00:00', '2017-04-29 00:00:00', '3', 'South', 'Standard Hotel', 'abiola.bello@hotmail.com', '2017-04-21 23:00:00', 'BOOKED'),
-(3, 'Bello', 'Abiola', 'Apartment', '2017-04-27 00:00:00', '2017-04-20 00:00:00', '1', 'East', 'Luxury Hotel', 'abiola.bello@hotmail.com', '2017-04-19 23:00:00', 'BOOKED'),
-(4, 'Bello', 'Abiola', 'Apartment', '2017-04-11 00:00:00', '2017-04-13 00:00:00', '1', 'Down Town', 'Luxury Hotel', 'abiola.bello@hotmail.com', '2017-04-10 23:00:00', 'BOOKED'),
-(5, 'Bello', 'Abiola', 'Apartment', '2017-04-03 00:00:00', '2017-04-03 00:00:00', '4', 'East', 'Luxury Hotel', 'abiola.bello@hotmail.com', '2017-04-15 23:00:00', 'BOOKED'),
-(6, 'alex', 'Mmgbo', 'City/Airport', '2017-04-18 00:00:00', '2017-04-28 00:00:00', '4', 'Resort', 'Tourist Hotel', 'abiola.bello@hotmail.com', '0000-00-00 00:00:00', 'BOOKED'),
-(7, 'alex', 'Mmgbo', 'City/Airport', '2017-04-18 00:00:00', '2017-04-28 00:00:00', '4', 'Resort', 'Tourist Hotel', 'abiola.bello@hotmail.com', '2017-04-13 23:00:00', 'BOOKED'),
-(8, 'Abiola', 'Bello', 'Apartment', '2017-04-16 00:00:00', '2017-04-22 00:00:00', '4', 'Airport', 'Tourist Hotel', 'abiola.bello@hotmail.com', '2017-04-10 12:41:56', 'BOOKED'),
-(9, 'Abiola', 'Bello', 'Apartment', '2017-04-16 00:00:00', '2017-04-22 00:00:00', '4', 'Airport', 'Tourist Hotel', 'abiola.bello@hotmail.com', '2017-04-10 12:42:11', 'BOOKED');
+INSERT INTO `hotel` (`ID`, `SURNAME`, `OTHERNAME`, `HOTELTYPE`, `CHECKIN_DATE`, `CHECKOUT_DATE`, `OCCUPANT`, `LOCATION`, `CATEGORY`, `EMAIL`, `PHONE`, `BOOKING_DATE`, `STATUS`) VALUES
+(1, 'Abiola', 'Bello', 'Apartment', '2017-04-13 00:00:00', '2017-04-14 00:00:00', '3', 'North', 'Luxury Hotel', 'abiola.bello@hotmail.com', '', '2017-04-24 23:00:00', 'BOOKED'),
+(2, 'Bello', 'Abiola', 'Apartment', '2017-04-28 00:00:00', '2017-04-29 00:00:00', '3', 'South', 'Standard Hotel', 'abiola.bello@hotmail.com', '', '2017-04-21 23:00:00', 'BOOKED'),
+(3, 'Bello', 'Abiola', 'Apartment', '2017-04-27 00:00:00', '2017-04-20 00:00:00', '1', 'East', 'Luxury Hotel', 'abiola.bello@hotmail.com', '', '2017-04-19 23:00:00', 'BOOKED'),
+(4, 'Bello', 'Abiola', 'Apartment', '2017-04-11 00:00:00', '2017-04-13 00:00:00', '1', 'Down Town', 'Luxury Hotel', 'abiola.bello@hotmail.com', '', '2017-04-10 23:00:00', 'BOOKED'),
+(5, 'Bello', 'Abiola', 'Apartment', '2017-04-03 00:00:00', '2017-04-03 00:00:00', '4', 'East', 'Luxury Hotel', 'abiola.bello@hotmail.com', '', '2017-04-15 23:00:00', 'BOOKED'),
+(6, 'alex', 'Mmgbo', 'City/Airport', '2017-04-18 00:00:00', '2017-04-28 00:00:00', '4', 'Resort', 'Tourist Hotel', 'abiola.bello@hotmail.com', '', '0000-00-00 00:00:00', 'BOOKED'),
+(7, 'alex', 'Mmgbo', 'City/Airport', '2017-04-18 00:00:00', '2017-04-28 00:00:00', '4', 'Resort', 'Tourist Hotel', 'abiola.bello@hotmail.com', '', '2017-04-13 23:00:00', 'BOOKED'),
+(8, 'Abiola', 'Bello', 'Apartment', '2017-04-16 00:00:00', '2017-04-22 00:00:00', '4', 'Airport', 'Tourist Hotel', 'abiola.bello@hotmail.com', '', '2017-04-10 12:41:56', 'BOOKED'),
+(9, 'Abiola', 'Bello', 'Apartment', '2017-04-16 00:00:00', '2017-04-22 00:00:00', '4', 'Airport', 'Tourist Hotel', 'abiola.bello@hotmail.com', '', '2017-04-10 12:42:11', 'BOOKED'),
+(10, 'Abiola', 'Zainab', 'City/Airport', '2017-06-07 00:00:00', '2017-06-15 00:00:00', '1', 'Airport', 'First Class', 'abiola.bello@hotmail.com', '', '2017-06-03 07:17:46', 'BOOKED');
 
 -- --------------------------------------------------------
 
@@ -292,7 +345,8 @@ CREATE TABLE `newsletter` (
 
 INSERT INTO `newsletter` (`NEWSLETTER_ID`, `EMAIL`, `REQUEST_DATE`) VALUES
 (10, 'bellab04@yahoo.com', '2017-04-08 18:58:02'),
-(11, 'bellab04@yahoo.com', '2017-04-08 18:58:16');
+(11, 'bellab04@yahoo.com', '2017-04-08 18:58:16'),
+(12, '', '2017-06-04 14:26:33');
 
 -- --------------------------------------------------------
 
@@ -319,9 +373,102 @@ CREATE TABLE `packages` (
 INSERT INTO `packages` (`id`, `name`, `createdBy`, `createdDate`, `price`, `THEMES`, `PRICEs`, `DESTINATION`, `BOOKING_DATE`) VALUES
 (1, 'Nigeria', 'Dassac', '2017-04-02 03:07:07', 500, '', '', '', '2017-04-10 10:28:06');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ts_log`
+--
+
+CREATE TABLE `ts_log` (
+  `LOGID` int(11) NOT NULL,
+  `PROCESS` varchar(255) NOT NULL,
+  `PROCESS_USER` varchar(50) NOT NULL,
+  `URLACCESSED` varchar(20) NOT NULL,
+  `logged_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ts_log`
+--
+
+INSERT INTO `ts_log` (`LOGID`, `PROCESS`, `PROCESS_USER`, `URLACCESSED`, `logged_date`) VALUES
+(67, ' SAFARI TOUR, published sucessfully', 'alex', '::1', '2017-06-04 12:50:43'),
+(68, ' SAFARI TOUR, published sucessfully', 'alex', '::1', '2017-06-04 12:53:11'),
+(69, ' SAFARI TOUR, published sucessfully', 'alex', '::1', '2017-06-04 12:56:21'),
+(70, ' SAFARI TOUR, published sucessfully', 'alex', '::1', '2017-06-04 12:57:21'),
+(71, ' SAFARI TOUR, published sucessfully', 'alex', '::1', '2017-06-04 12:57:25'),
+(72, ' SAFARI TOUR, published sucessfully', 'alex', '::1', '2017-06-04 12:59:10'),
+(73, ' Singapore Tour, published sucessfully', 'alex', '::1', '2017-06-04 01:09:44'),
+(74, ' Honeymoon Vacation, published sucessfully', 'alex', '::1', '2017-06-04 01:49:39'),
+(75, ' ddddd, published sucessfully', 'alex', '::1', '2017-06-04 03:46:55'),
+(76, ' Honeymoon Vacation, published sucessfully', 'alex', '::1', '2017-06-04 03:46:58'),
+(77, 'home page view', '', '::1', '2017-06-04 07:12:11'),
+(78, 'contactus page view', '', '::1', '2017-06-04 07:12:54'),
+(79, 'home page view', 'alex', '::1', '2017-06-04 07:24:36'),
+(80, 'aboutus page view', 'alex', '::1', '2017-06-04 07:43:21'),
+(81, 'home page view', 'alex', '::1', '2017-06-04 07:43:50'),
+(82, 'home page view', 'alex', '::1', '2017-06-04 07:43:51'),
+(83, 'home page view', 'alex', '::1', '2017-06-04 07:45:26'),
+(84, 'aboutus page view', 'alex', '::1', '2017-06-04 07:49:27'),
+(85, '<div class="alert alert-success"><i class="fa fa-warning"></i>thank you for doing business with us! we will get back to you shortly</div>', 'alex', '::1', '2017-06-04 07:50:53'),
+(86, 'home page view', 'alex', '::1', '2017-06-04 08:05:18'),
+(87, 'career page view', 'alex', '::1', '2017-06-04 09:10:22'),
+(88, 'career page view', 'alex', '::1', '2017-06-04 09:58:20'),
+(89, 'home page view', 'alex', '::1', '2017-06-04 10:02:35'),
+(90, 'aboutus page view', 'alex', '::1', '2017-06-04 10:15:03'),
+(91, 'career page view', 'alex', '::1', '2017-06-04 10:15:07'),
+(92, 'contactus page view', 'alex', '::1', '2017-06-04 10:15:10'),
+(93, 'home page view', 'alex', '::1', '2017-06-04 11:00:50'),
+(94, 'home page view', 'alex', '::1', '2017-06-04 11:02:47'),
+(95, 'home page view', 'alex', '::1', '2017-06-04 11:10:19'),
+(96, 'aboutus page view', 'alex', '::1', '2017-06-04 11:10:22'),
+(97, 'career page view', 'alex', '::1', '2017-06-04 11:10:32'),
+(98, 'contactus page view', 'alex', '::1', '2017-06-04 11:10:42'),
+(99, 'contactus page view', 'alex', '::1', '2017-06-04 11:11:38'),
+(100, 'contactus page view', 'alex', '::1', '2017-06-04 11:12:03'),
+(101, 'contactus page view', 'alex', '::1', '2017-06-04 11:13:33'),
+(102, 'career page view', 'alex', '::1', '2017-06-04 11:24:40'),
+(103, 'career page view', 'alex', '::1', '2017-06-04 11:25:04'),
+(104, 'career page view', 'alex', '::1', '2017-06-04 11:28:17'),
+(105, 'career page view', 'alex', '::1', '2017-06-04 11:29:26'),
+(106, 'career page view', 'alex', '::1', '2017-06-04 11:30:07'),
+(107, 'career page view', 'alex', '::1', '2017-06-04 11:30:13'),
+(108, 'career page view', 'alex', '::1', '2017-06-04 11:31:07'),
+(109, 'career page view', 'alex', '::1', '2017-06-04 11:31:16'),
+(110, 'career page view', 'alex', '::1', '2017-06-04 11:31:26'),
+(111, 'contactus page view', 'alex', '::1', '2017-06-04 11:33:07'),
+(112, 'career page view', 'alex', '::1', '2017-06-04 11:33:13'),
+(113, 'career page view', 'alex', '::1', '2017-06-04 11:33:43'),
+(114, 'career page view', 'alex', '::1', '2017-06-04 11:34:01'),
+(115, 'career page view', 'alex', '::1', '2017-06-04 11:36:07'),
+(116, 'career page view', 'alex', '::1', '2017-06-04 11:41:35'),
+(117, 'career page view', 'alex', '::1', '2017-06-04 11:41:47'),
+(118, 'home page view', 'alex', '::1', '2017-06-04 11:41:50'),
+(119, 'home page view', 'alex', '::1', '2017-06-04 11:42:17'),
+(120, 'home page view', 'alex', '::1', '2017-06-04 11:42:22'),
+(121, 'home page view', 'alex', '::1', '2017-06-05 12:03:40'),
+(122, 'contactus page view', 'alex', '::1', '2017-06-05 12:04:18'),
+(123, 'contactus page view', 'alex', '::1', '2017-06-05 12:04:59'),
+(124, 'aboutus page view', 'alex', '::1', '2017-06-05 12:05:11'),
+(125, 'home page view', 'alex', '::1', '2017-06-05 12:05:22'),
+(126, 'contactus page view', 'alex', '::1', '2017-06-05 12:06:00'),
+(127, 'contactus page view', 'alex', '::1', '2017-06-05 12:10:04'),
+(128, 'aboutus page view', 'alex', '::1', '2017-06-05 12:11:27'),
+(129, 'home page view', 'alex', '::1', '2017-06-05 12:11:46'),
+(130, 'aboutus page view', 'alex', '::1', '2017-06-05 12:11:49'),
+(131, 'contactus page view', 'alex', '::1', '2017-06-05 12:12:20'),
+(132, 'home page view', '', '::1', '2017-06-05 09:49:05'),
+(133, 'aboutus page view', '', '::1', '2017-06-05 09:49:22');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `brochure`
+--
+ALTER TABLE `brochure`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `category`
@@ -397,9 +544,20 @@ ALTER TABLE `packages`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `ts_log`
+--
+ALTER TABLE `ts_log`
+  ADD PRIMARY KEY (`LOGID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `brochure`
+--
+ALTER TABLE `brochure`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `category`
 --
@@ -409,7 +567,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `CONTACT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `CONTACT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `dasaac_user`
 --
@@ -419,17 +577,17 @@ ALTER TABLE `dasaac_user`
 -- AUTO_INCREMENT for table `deals`
 --
 ALTER TABLE `deals`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `flightreservation`
 --
 ALTER TABLE `flightreservation`
-  MODIFY `ID` int(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `hotel`
 --
 ALTER TABLE `hotel`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `hotelmanager`
 --
@@ -454,12 +612,17 @@ ALTER TABLE `location`
 -- AUTO_INCREMENT for table `newsletter`
 --
 ALTER TABLE `newsletter`
-  MODIFY `NEWSLETTER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `NEWSLETTER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `ts_log`
+--
+ALTER TABLE `ts_log`
+  MODIFY `LOGID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
