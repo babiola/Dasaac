@@ -97,6 +97,8 @@
                   </div>
                 </div>
             </div>
+            
+            
         <div class="col-md-12">
             <div class="col-md-3">
                 
@@ -119,11 +121,23 @@
 <div class="container-fluid" style="background-color: #8D652F">
     <div class="row">
         <div class="col-md-12">
-            <?php
-			foreach($hot as $hotdeals){ ?>
-			<div class="col-md-3"><img src="<?php echo base_url(); ?>uploads/hotdeals/<?php echo$hotdeals->path;?>" alt="<?php echo$hotdeals->Name;?>" class="img-rounded" style="width: 100%; height: 270px; margin-top: 20px; margin-bottom: 20px"></div>
-           	
-			  <?php } ?>                                              
+            
+           <div class="col-md-3"><img src="<?php echo base_url(); ?>assets/img/weekly/dasaact.jpg" alt="..." class="img-rounded" style="width: 100%; height: 270px; margin-top: 20px; margin-bottom: 20px"></div>
+           
+           <div class="col-md-3"><img src="<?php echo base_url(); ?>assets/img/weekly/dasaact.jpg" alt="..." class="img-rounded" style="width: 100%; height: 270px; margin-top: 20px; margin-bottom: 20px"></div>
+           
+           <div class="col-md-3"><img src="<?php echo base_url(); ?>assets/img/weekly/dasaact.jpg" alt="..." class="img-rounded" style="width: 100%; height: 270px; margin-top: 20px; margin-bottom: 20px"></div>
+           
+           <div class="col-md-3"><img src="<?php echo base_url(); ?>assets/img/weekly/dasaact.jpg" alt="..." class="img-rounded" style="width: 100%; height: 270px; margin-top: 20px; margin-bottom: 20px"></div>
+           
+           <div class="col-md-3"><img src="<?php echo base_url(); ?>assets/img/weekly/dasaact.jpg" alt="..." class="img-rounded" style="width: 100%; height: 270px; margin-top: 20px; margin-bottom: 20px"></div>
+           
+           <div class="col-md-3"><img src="<?php echo base_url(); ?>assets/img/weekly/dasaact.jpg" alt="..." class="img-rounded" style="width: 100%; height: 270px; margin-top: 20px; margin-bottom: 20px"></div>
+           
+           <div class="col-md-3"><img src="<?php echo base_url(); ?>assets/img/weekly/dasaact.jpg" alt="..." class="img-rounded" style="width: 100%; height: 270px; margin-top: 20px; margin-bottom: 20px"></div>
+           
+           <div class="col-md-3"><img src="<?php echo base_url(); ?>assets/img/weekly/dasaact.jpg" alt="..." class="img-rounded" style="width: 100%; height: 270px; margin-top: 20px; margin-bottom: 20px"></div> 
+                                                        
         </div>
     </div>
 </div>

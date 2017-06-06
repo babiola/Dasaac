@@ -14,13 +14,13 @@ class Mdl_deals extends CI_Model {
         return $table;
     }
 	
-	function get_table_hot() {
-        $table = "hotdeals";
+	function get_table_flight() {
+        $table = "flightreservation";
         return $table;
     }
 
-	 function getAll_hot() {
-        $table = $this->get_table_hot();
+	 function getAll_flight() {
+        $table = $this->get_table_flight();
         $query = $this->db->get($table);
         return $query;
     }
@@ -52,13 +52,6 @@ class Mdl_deals extends CI_Model {
         //  echo $query;
         return $query;
     }
-	 function get_where_hot($id) {
-        $table = $this->get_table_hot();
-        $this->db->where('ID', $id);
-        $query = $this->db->get($table);
-        //  echo $query;
-        return $query;
-    }
 
     function get_where_custom($col, $value) {
         $table = $this->get_table();
@@ -71,10 +64,7 @@ class Mdl_deals extends CI_Model {
         $table = $this->get_table();
         $this->db->insert($table, $data);
     }
-function _insert_hot($data) {
-        $table = $this->get_table_hot();
-        $this->db->insert($table, $data);
-    }
+
     function _update($id, $data) {
         $table = $this->get_table();
         $this->db->where('ID', $id);
@@ -83,17 +73,6 @@ function _insert_hot($data) {
 
     function _delete($id) {
         $table = $this->get_table();
-        $this->db->where('ID', $id);
-        $this->db->delete($table);
-    }
-	function _update_hot($id, $data) {
-        $table = $this->get_table_hot();
-        $this->db->where('ID', $id);
-        $this->db->update($table, $data);
-    }
-
-    function _delete_hot($id) {
-        $table = $this->get_table_hot();
         $this->db->where('ID', $id);
         $this->db->delete($table);
     }

@@ -1,4 +1,4 @@
- <div class="jumbotron" style="background-image: url(<?php echo base_url();?>assets/img/banners/banner_about.jpg); background-repeat: no-repeat; background-size: cover; background-position: center;">
+ <div class="jumbotron" style="background-image: url(imgs/banners/banner_about.jpg); background-repeat: no-repeat; background-size: cover; background-position: center;">
           <div class="container"  style="height: 220px;">
             <img src="" />
           </div>

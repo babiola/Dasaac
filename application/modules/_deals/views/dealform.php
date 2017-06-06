@@ -61,7 +61,7 @@
                         </div>
                       <div class="form-group">
 		<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-		<a href="<?php echo base_url(); ?>deals/available" class="btn btn-warning"><i class="fa fa-history"></i> Cancel</a>&nbsp; &nbsp;
+		<a href="<?php echo base_url(); ?>deals/availabledeals" class="btn btn-warning"><i class="fa fa-history"></i> Cancel</a>&nbsp; &nbsp;
 		<button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Add Deal</button>
 		</div>
 		</div> 

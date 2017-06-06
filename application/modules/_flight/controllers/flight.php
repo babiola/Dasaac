@@ -15,7 +15,6 @@ class Flight extends MX_Controller {
    function index() {
         $data['title'] = 'Welcome Dasaac Travels and Tour';
 		$data['view_file'] = 'index';
-		$data['hot'] = $this->published()->result();
 		$process ='home page view';
 		$this->log($process);
         $this->loadView($data);
@@ -85,7 +84,11 @@ class Flight extends MX_Controller {
 		
 		}
 	}
-	
+	function allcareers(){
+		$data['title'] = 'Dasaac Travels and Tour all career';
+		$data['view_file'] = 'careerView';
+        $this->loadView($data);
+	}
 	function faq(){
 		$data['title'] = 'Dasaac Travels Frequently asked questions';
 		$data['view_file'] = 'faqView';
@@ -179,11 +182,6 @@ function subscrible(){
     function cancel() {
         // redirect to record list page
         redirect('staff/index/', 'refresh');
-    }
-	 function published() {
-	 $sql = "select * from hotdeals where status = 'published' order by Date_published desc limit 8";
-        $query = $this->_custom_query($sql);
-        return $query;
     }
  	// error log
     function log($process) {
