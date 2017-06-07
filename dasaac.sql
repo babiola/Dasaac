@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2017 at 10:01 AM
+-- Generation Time: Jun 07, 2017 at 09:57 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -197,6 +197,31 @@ INSERT INTO `flightreservation` (`ID`, `TITLE`, `SURNAME`, `OTHERNAME`, `EMAIL`,
 (13, 'mr', 'Ijeoma', 'Bello', 'abiola.bello@hotmail.com', 'One Way', 'Economy', 'lagos', 'canada', '2017-04-02 00:00:00', '2017-04-02 00:00:00', '1', '0', '0', '2017-04-19 09:28:53', 'BOOKED', NULL),
 (14, 'mr', 'bello', 'Zainab', 'abiola.bello@hotmail.com', 'Round Trip', 'First', 'Portugal', 'london', '2017-06-04 00:00:00', '2017-06-15 00:00:00', '1', '0', '0', '2017-06-03 07:06:39', 'BOOKED', NULL),
 (15, 'mrs', 'bode', 'Bello', 'abiola.bello@hotmail.com', 'Round Trip', 'Economy', 'Surulere', 'london', '2017-06-05 00:00:00', '2017-06-15 00:00:00', '1', '0', '0', '2017-06-04 17:50:53', 'BOOKED', '7036264305');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hotdeals`
+--
+
+CREATE TABLE `hotdeals` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(20) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `path` varchar(200) NOT NULL,
+  `createdby` varchar(50) NOT NULL,
+  `Date_Created` datetime NOT NULL,
+  `Date_published` datetime NOT NULL,
+  `status` enum('not published','published') NOT NULL DEFAULT 'not published',
+  `publishedby` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `hotdeals`
+--
+
+INSERT INTO `hotdeals` (`ID`, `Name`, `description`, `path`, `createdby`, `Date_Created`, `Date_published`, `status`, `publishedby`) VALUES
+(5, 'hotdeal', 'newest deal', 'broch5.jpg', 'alex', '2017-06-06 08:23:25', '2017-06-06 08:23:32', 'published', 'alex');
 
 -- --------------------------------------------------------
 
@@ -458,7 +483,43 @@ INSERT INTO `ts_log` (`LOGID`, `PROCESS`, `PROCESS_USER`, `URLACCESSED`, `logged
 (130, 'aboutus page view', 'alex', '::1', '2017-06-05 12:11:49'),
 (131, 'contactus page view', 'alex', '::1', '2017-06-05 12:12:20'),
 (132, 'home page view', '', '::1', '2017-06-05 09:49:05'),
-(133, 'aboutus page view', '', '::1', '2017-06-05 09:49:22');
+(133, 'aboutus page view', '', '::1', '2017-06-05 09:49:22'),
+(134, 'home page view', '', '::1', '2017-06-05 10:19:49'),
+(135, 'aboutus page view', '', '::1', '2017-06-05 01:54:23'),
+(136, 'home page view', '', '::1', '2017-06-05 01:54:23'),
+(137, 'contactus page view', '', '::1', '2017-06-05 03:58:15'),
+(138, 'contactus page view', '', '::1', '2017-06-06 10:14:00'),
+(139, 'contactus page view', '', '::1', '2017-06-06 10:14:01'),
+(140, 'aboutus page view', '', '::1', '2017-06-06 12:49:15'),
+(141, 'home page view', '', '::1', '2017-06-06 12:49:45'),
+(142, 'home page view', 'alex', '::1', '2017-06-06 12:56:08'),
+(143, 'home page view', 'alex', '::1', '2017-06-06 06:22:46'),
+(144, 'home page view', 'alex', '::1', '2017-06-06 06:54:57'),
+(145, ' hotdeal, published sucessfully', 'alex', '::1', '2017-06-06 07:03:24'),
+(146, 'home page view', 'alex', '::1', '2017-06-06 07:03:25'),
+(147, ' hotdeal, published sucessfully', 'alex', '::1', '2017-06-06 07:05:08'),
+(148, ' hotdeal, published sucessfully', 'alex', '::1', '2017-06-06 07:06:46'),
+(149, ' hotdeal, deleted sucessfully', 'alex', '::1', '2017-06-06 07:07:03'),
+(150, ' , deleted sucessfully', 'alex', '::1', '2017-06-06 07:10:55'),
+(151, ' hotdeal, deleted sucessfully', 'alex', '::1', '2017-06-06 07:19:34'),
+(152, ' hotdeal, deleted sucessfully', 'alex', '::1', '2017-06-06 07:21:29'),
+(153, ' hotdeal, deleted sucessfully', 'alex', '::1', '2017-06-06 08:22:56'),
+(154, ' hotdeal, published sucessfully', 'alex', '::1', '2017-06-06 08:23:33'),
+(155, 'home page view', '', '::1', '2017-06-06 08:24:24'),
+(156, 'home page view', '', '::1', '2017-06-06 08:30:25'),
+(157, 'home page view', '', '::1', '2017-06-06 08:31:08'),
+(158, 'home page view', '', '::1', '2017-06-06 08:32:28'),
+(159, 'home page view', '', '::1', '2017-06-06 08:32:35'),
+(160, 'home page view', '', '::1', '2017-06-06 08:33:50'),
+(161, 'home page view', '', '::1', '2017-06-06 08:36:26'),
+(162, 'aboutus page view', '', '::1', '2017-06-06 08:36:34'),
+(163, 'aboutus page view', '', '::1', '2017-06-06 08:40:20'),
+(164, 'aboutus page view', '', '::1', '2017-06-06 08:40:27'),
+(165, 'aboutus page view', '', '::1', '2017-06-06 08:41:13'),
+(166, 'aboutus page view', '', '::1', '2017-06-06 08:41:24'),
+(167, 'aboutus page view', '', '::1', '2017-06-06 08:42:08'),
+(168, 'home page view', '', '::1', '2017-06-06 08:44:14'),
+(169, 'home page view', '', '::1', '2017-06-07 09:53:57');
 
 --
 -- Indexes for dumped tables
@@ -498,6 +559,12 @@ ALTER TABLE `deals`
 -- Indexes for table `flightreservation`
 --
 ALTER TABLE `flightreservation`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `hotdeals`
+--
+ALTER TABLE `hotdeals`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -584,6 +651,11 @@ ALTER TABLE `deals`
 ALTER TABLE `flightreservation`
   MODIFY `ID` int(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
+-- AUTO_INCREMENT for table `hotdeals`
+--
+ALTER TABLE `hotdeals`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `hotel`
 --
 ALTER TABLE `hotel`
@@ -622,7 +694,7 @@ ALTER TABLE `packages`
 -- AUTO_INCREMENT for table `ts_log`
 --
 ALTER TABLE `ts_log`
-  MODIFY `LOGID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `LOGID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
